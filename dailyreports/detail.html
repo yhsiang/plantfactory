@@ -1,0 +1,245 @@
+
+<form id="top" name="myForm">
+  <!-- data-->
+  <div class="control-group">
+    <label>電表流量</label>
+    <input type="text" name="emeter" ng-model="dailyreport.data.emeter" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>水表流量</label>
+    <input type="text" name="wmeter" ng-model="dailyreport.data.wmeter" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>電導度</label>
+    <input type="text" name="ecvalue" ng-model="dailyreport.data.ecvalue" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>PH值</label>
+    <input type="text" name="phvalue" ng-model="dailyreport.data.phvalue" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>室內溫度</label>
+    <input type="text" name="roomtemp" ng-model="dailyreport.data.roomtemp" required="required"/>
+  </div>
+  <!-- checking-->
+  <!-- 純水濾芯-->
+  <div class="control-group">
+    <label>純水濾芯</label>
+    <label>
+      <input type="radio" name="waterfilter" ng-model="dailyreport.checked.waterfilter.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="waterfilter" ng-model="dailyreport.checked.waterfilter.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.waterfilter.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.waterfilter.problem"/>
+    </div>
+  </div>
+  <!--儲水量-->
+  <div class="control-group">
+    <label>儲水量</label>
+    <label>
+      <input type="radio" name="waterstorage" ng-model="dailyreport.checked.waterstorage.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="waterstorage" ng-model="dailyreport.checked.waterstorage.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.waterstorage.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.waterstorage.problem"/>
+    </div>
+  </div>
+  <!--微霧機-->
+  <div class="control-group">
+    <label>微霧機濾網</label>
+    <label>
+      <input type="radio" name="mistmachinefilter" ng-model="dailyreport.checked.mistmachinefilter.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="mistmachinefilter" ng-model="dailyreport.checked.mistmachinefilter.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.mistmachinefilter.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.mistmachinefilter.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>微霧機機油</label>
+    <label>
+      <input type="radio" name="mistmachineoil" ng-model="dailyreport.checked.mistmachineoil.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="mistmachineoil" ng-model="dailyreport.checked.mistmachineoil.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.mistmachineoil.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.mistmachineoil.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>微霧機皮帶</label>
+    <label>
+      <input type="radio" name="mistmachinestrap" ng-model="dailyreport.checked.mistmachinestrap.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="mistmachinestrap" ng-model="dailyreport.checked.mistmachinestrap.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.mistmachinestrap.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.mistmachinestrap.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>壓力</label>
+    <label>
+      <input type="radio" name="pressure" ng-model="dailyreport.checked.pressure.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="pressure" ng-model="dailyreport.checked.pressure.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.pressure.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.pressure.problem"/>
+    </div>
+  </div>
+  <!--CO2-->
+  <div class="control-group">
+    <label>CO2剩餘量</label>
+    <label>
+      <input type="radio" name="residualco2" ng-model="dailyreport.checked.residualco2.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="residualco2" ng-model="dailyreport.checked.residualco2.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.residualco2.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.residualco2.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>CO2吸附劑</label>
+    <label>
+      <input type="radio" name="sodalimeco2" ng-model="dailyreport.checked.sodalimeco2.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="sodalimeco2" ng-model="dailyreport.checked.sodalimeco2.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.sodalimeco2.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.sodalimeco2.problem"/>
+    </div>
+  </div>
+  <!-- 幫浦-->
+  <div class="control-group">
+    <label>加壓幫浦</label>
+    <label>
+      <input type="radio" name="pressurepumps" ng-model="dailyreport.checked.pressurepumps.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="pressurepumps" ng-model="dailyreport.checked.pressurepumps.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.pressurepumps.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.pressurepumps.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>抽水幫浦</label>
+    <label>
+      <input type="radio" name="waterpumps" ng-model="dailyreport.checked.waterpumps.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="waterpumps" ng-model="dailyreport.checked.waterpumps.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.waterpumps.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.waterpumps.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>空調</label>
+    <label>
+      <input type="radio" name="aircondition" ng-model="dailyreport.checked.aircondition.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="aircondition" ng-model="dailyreport.checked.aircondition.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.aircondition.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.aircondition.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>LED</label>
+    <label>
+      <input type="radio" name="led" ng-model="dailyreport.checked.led.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="led" ng-model="dailyreport.checked.led.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.led.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.led.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>氣霧噴施系統</label>
+    <label>
+      <input type="radio" name="aerosolspraydevice" ng-model="dailyreport.checked.aerosolspraydevice.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="aerosolspraydevice" ng-model="dailyreport.checked.aerosolspraydevice.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.aerosolspraydevice.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.aerosolspraydevice.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>廢液回收系統</label>
+    <label>
+      <input type="radio" name="wasterecycleequip" ng-model="dailyreport.checked.wasterecycleequip.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="wasterecycleequip" ng-model="dailyreport.checked.wasterecycleequip.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.wasterecycleequip.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.wasterecycleequip.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>環境維護</label>
+    <label>
+      <input type="radio" name="environment" ng-model="dailyreport.checked.environment.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="environment" ng-model="dailyreport.checked.environment.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.environment.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.environment.problem"/>
+    </div>
+  </div>
+  <!-- plant record-->
+  <div class="control-group">
+    <label>植物生長記錄</label>
+    <label>
+      <input type="radio" name="plantrecord" ng-model="dailyreport.checked.plantrecord.status" ng-value="true"/>正常
+    </label>
+    <label>
+      <input type="radio" name="plantrecord" ng-model="dailyreport.checked.plantrecord.status" ng-value="false"/>異常|紀錄
+    </label>
+    <div ng-show="!dailyreport.checked.plantrecord.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.plantrecord.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>圖片</label><a ng-click="uploadpic()" class="btn btn-primary">上傳</a>
+    <ul>
+      <li ng-repeat="photo in dailyreport.photos" ng-show="photo"><img ng-src="{{photo.url}}"/></li>
+    </ul>
+  </div>
+</form>

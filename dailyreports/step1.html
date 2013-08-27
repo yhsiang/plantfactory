@@ -1,0 +1,28 @@
+
+<form id="top" name="myForm">
+  <!-- data-->
+  <div class="control-group">
+    <label>電表流量</label>
+    <input type="text" name="emeter" ng-model="dailyreport.data.emeter" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>水表流量</label>
+    <input type="text" name="wmeter" ng-model="dailyreport.data.wmeter" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>電導度</label>
+    <input type="text" name="ecvalue" ng-model="dailyreport.data.ecvalue" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>PH值</label>
+    <input type="text" name="phvalue" ng-model="dailyreport.data.phvalue" required="required"/>
+  </div>
+  <div class="control-group">
+    <label>室內溫度</label>
+    <input type="text" name="roomtemp" ng-model="dailyreport.data.roomtemp" required="required"/>
+  </div>
+  <div class="form-actions">
+    <div class="control-group"><a href="#/" class="btn btn-large">Cancel</a></div>
+    <div class="control-group"><a href="#/new/step2" ng-click="update()" class="btn btn-info btn-large">下一步</a></div>
+  </div>
+</form>

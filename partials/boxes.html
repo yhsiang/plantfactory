@@ -1,0 +1,16 @@
+
+<ul class="breadcrumb">
+  <li><a href="#/">栽培室</a><span class="divider">/</span></li>
+  <li><a href="#/{{room._id.$oid}}/sheives">{{room.name}} </a><span class="divider">/</span></li>
+  <li>
+     
+    {{shelf.name}}  <span class="divider">/</span>
+  </li>
+  <li>{{level.name}}</li>
+</ul>
+<ul class="boxes">
+  <li ng-repeat="box in boxes" class="box"><a href="#/{{room._id.$oid}}/{{shelf._id.$oid}}/{{level.pos}}/{{box._id.$oid}}" class="name"> 
+      <h4>{{box.name}}</h4></a></li>
+  <li class="plus"><a ng-click="plus()">
+      <h4>新增栽培箱</h4></a></li>
+</ul>

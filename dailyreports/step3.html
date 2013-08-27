@@ -1,0 +1,14 @@
+
+<form id="top" name="myForm">
+  <div class="control-group">
+    <label>上傳圖片/拍照</label><a ng-click="uploadpic()" class="btn btn-large"><i class="icon-camera icon-large"></i></a>
+    <ul>
+      <li ng-repeat="photo in dailyreport.photos" ng-show="photo"><img ng-src="{{photo.url}}"/></li>
+    </ul>
+  </div>
+  <div class="form-actions">
+    <div class="control-group">	<a href="#/" class="btn btn-large">Cancel</a></div>
+    <div class="control-group"><a href="#/new/step2" ng-clikc="update()" class="btn btn-info btn-large">上一步</a></div>
+    <div class="control-group"><a ng-click="save()" class="btn btn-primary btn-large">檢查完成</a></div>
+  </div>
+</form>

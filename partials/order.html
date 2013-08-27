@@ -1,0 +1,9 @@
+
+<div class="factories">
+  <div ng-repeat="factory in factories" class="factory">
+    <div class="name">{{factory.name}}</div>
+    <div class="plants">
+      <div ng-repeat="plant in factory.plants" class="plant">{{plant.name}} {{plant.amount}}</div>
+    </div>
+  </div>
+</div>

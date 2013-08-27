@@ -1,9 +1,41 @@
-<html>
-  <head>
-    <meta charset="utf8">
-    <title>植物工廠</title>
-  </head>
+<!DOCTYPE html>
+<html ng-app="plantfactory">
+  <head></head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>Plant Factory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="/css/app.css">
+  <!--
+  <Le>HTML5 shim, for IE6-8 support of HTML5 elements</Le>
+  -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="/js/vendor.js"></script>
+  <script>(function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,pickAndStore,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);</script>
+  <script>filepicker.setKey('Aa75iF9P7SlCEoO4ckHs9z');</script>
+  <script src="/js/app.js"></script>
   <body>
-    植物工廠網站
+    <header>
+      <div class="container">
+        <h1>植物工廠</h1>
+      </div>
+    </header>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li><a href="#/"> <i class="icon-list icon-large"></i>瀏覽</a></li>
+            <li><a href="#/room"> <i class="icon-list icon-large"></i>實況</a></li>
+            <li><a href="#/new/step1"> <i class="icon-plus-sign icon-large"></i>新增</a></li>
+            <li><a href="#/plant/order"> <i class="icon-plus-sign icon-large"></i>訂購</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="content-wrapper" class="container">
+      <div ng-view class="main"></div>
+    </div>
   </body>
 </html>

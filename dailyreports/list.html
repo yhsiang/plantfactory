@@ -1,0 +1,117 @@
+
+<div id="top" class="form-horizontal">
+  <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" disabled="disabled"/>
+  <button ng-click="open()" class="btn btn-large"><i class="icon-calendar icon-large"></i></button>
+</div>
+<div select="dt" class="list-wrapper">
+  <accordion>
+    <accordion-group ng-repeat="dailyreport in dailyreports" heading="{{dailyreport.createdAt | title}}, 檢查時間: {{dailyreport.createdAt | date: 'HH:mm'}}">
+      <div class="data-wrapper">
+        <div class="data emeter">
+          <div class="text">電表流量 </div>
+          <div class="value">{{dailyreport.data.emeter}}</div>
+        </div>
+        <div class="data wmeter">
+          <div class="text">水表流量</div>
+          <div class="value">{{dailyreport.data.wmeter}}</div>
+        </div>
+        <div class="data ecvalue">
+          <div class="text">電導度 </div>
+          <div class="value">{{dailyreport.data.ecvalue}}</div>
+        </div>
+        <div class="data phvalue">
+          <div class="text">PH值</div>
+          <div class="value">{{dailyreport.data.phvalue}}</div>
+        </div>
+        <div class="data roomtemp">
+          <div class="text">室內溫度</div>
+          <div class="value">{{dailyreport.data.roomtemp}}</div>
+        </div>
+      </div>
+      <div class="checked-wrapper">
+        <div class="checked waterfilter">
+          <div class="text">純水濾芯</div>
+          <div class="status"><i ng-show="dailyreport.checked.waterfilter.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.waterfilter.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.waterfilter.status" class="problem">{{dailyreport.checked.waterfilter.problem}}</div>
+        </div>
+        <div class="checked waterstorage">
+          <div class="text">儲水量</div>
+          <div class="status"><i ng-show="dailyreport.checked.waterstorage.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.waterstorage.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.waterstorage.status" class="problem">{{dailyreport.checked.waterstorage.problem}}</div>
+        </div>
+        <div class="checked mistmachinefilter">
+          <div class="text">微霧機濾網</div>
+          <div class="status"><i ng-show="dailyreport.checked.mistmachinefilter.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.mistmachinefilter.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.mistmachinefilter.status" class="problem">{{dailyreport.checked.mistmachinefilter.problem}}</div>
+        </div>
+        <div class="checked mistmachineoil">
+          <div class="text">微霧機機油</div>
+          <div class="status"><i ng-show="dailyreport.checked.mistmachineoil.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.mistmachineoil.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.mistmachineoil.status" class="problem">{{dailyreport.checked.mistmachineoil.problem}}				</div>
+        </div>
+        <div class="checked mistmachinestrap">
+          <div class="text">微霧機皮帶</div>
+          <div class="status"><i ng-show="dailyreport.checked.mistmachinestrap.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.mistmachinestrap.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.mistmachinestrap.status" class="problem">{{dailyreport.checked.mistmachinestrap.problem}}				</div>
+        </div>
+        <div class="checked pressure">
+          <div class="text">壓力</div>
+          <div class="status"><i ng-show="dailyreport.checked.pressure.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.pressure.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.pressure.status" class="problem">{{dailyreport.checked.pressure.problem}}</div>
+        </div>
+        <div class="checked residualco2">
+          <div class="text">CO2剩餘量</div>
+          <div class="status"><i ng-show="dailyreport.checked.residualco2.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.residualco2.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.residualco2.status" class="problem">{{dailyreport.checked.residualco2.problem}}</div>
+        </div>
+        <div class="checked sodalimeco2">
+          <div class="text">CO2吸附劑</div>
+          <div class="status"><i ng-show="dailyreport.checked.sodalimeco2.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.sodalimeco2.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.sodalimeco2.status" class="problem">{{dailyreport.checked.sodalimeco2.problem}}</div>
+        </div>
+        <div class="checked pressurepumps">
+          <div class="text">加壓幫浦</div>
+          <div class="status"><i ng-show="dailyreport.checked.pressurepumps.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.pressurepumps.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.pressurepumps.status" class="problem">{{dailyreport.checked.pressurepumps.problem}}</div>
+        </div>
+        <div class="checked waterpumps">
+          <div class="text">抽水幫浦</div>
+          <div class="status"><i ng-show="dailyreport.checked.waterpumps.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.waterpumps.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.waterpumps.status" class="problem">{{dailyreport.checked.waterpumps.problem}}</div>
+        </div>
+        <div class="checked aircondition">
+          <div class="text">空調</div>
+          <div class="status"><i ng-show="dailyreport.checked.aircondition.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.aircondition.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.aircondition.status" class="problem">{{dailyreport.checked.aircondition.problem}}</div>
+        </div>
+        <div class="checked led">
+          <div class="text">LED</div>
+          <div class="status"><i ng-show="dailyreport.checked.led.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.led.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.led.status" class="problem">{{dailyreport.checked.led.problem}}</div>
+        </div>
+        <div class="checked aerosolspraydevice">
+          <div class="text">氣霧噴施系統</div>
+          <div class="status"><i ng-show="dailyreport.checked.aerosolspraydevice.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.aerosolspraydevice.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.aerosolspraydevice.status" class="problem">{{dailyreport.checked.aerosolspraydevice.problem}}</div>
+        </div>
+        <div class="checked wasterecycleequip">
+          <div class="text">廢液回收系統</div>
+          <div class="status"><i ng-show="dailyreport.checked.wasterecycleequip.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.wasterecycleequip.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.wasterecycleequip.status" class="problem">{{dailyreport.checked.wasterecycleequip.problem}}</div>
+        </div>
+        <div class="checked environment">
+          <div class="text">環境</div>
+          <div class="status"><i ng-show="dailyreport.checked.environment.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.environment.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.environment.status" class="problem">{{dailyreport.checked.environment.problem}}</div>
+        </div>
+        <div class="checked plantrecord">			
+          <div class="text">植物生長</div>
+          <div class="status"><i ng-show="dailyreport.checked.plantrecord.status" class="icon-ok-sign icon-large"></i><i ng-show="!dailyreport.checked.plantrecord.status" class="icon-remove-sign icon-large"></i></div>
+          <div ng-show="!dailyreport.checked.plantrecord.status" class="problem">{{dailyreport.checked.plantrecord.problem}}</div>
+        </div>
+      </div>
+      <div class="photos"><img ng-repeat="photo in dailyreport.photos" ng-src="{{photo.url}}"/></div>
+      <div class="videos"></div>
+    </accordion-group>
+  </accordion>
+</div>

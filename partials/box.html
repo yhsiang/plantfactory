@@ -1,0 +1,16 @@
+
+<ul class="breadcrumb">
+  <li><a href="#/">栽培室</a><span class="divider">/</span></li>
+  <li><a href="#/{{room}}/sheives">{{room}} </a><span class="divider">/</span></li>
+  <li>
+     
+    {{shelf}}   <span class="divider">/</span>
+  </li>
+  <li><a href="#/{{room}}/{{shelf}}/{{level}}/box">{{level}}</a><span class="divider">/ </span></li>
+  <li>{{box}}</li>
+</ul>
+<ul class="plants">
+  <li ng-repeat="plant in plants" class="plant">
+    <h4 class="name"></h4>
+  </li>
+</ul>

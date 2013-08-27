@@ -1,0 +1,191 @@
+
+<form id="top" name="myForm">
+  <!-- checking-->
+  <!-- 純水濾芯-->
+  <div class="control-group">
+    <label>純水濾芯</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.waterfilter.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.waterfilter.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.waterfilter.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.waterfilter.problem"/>
+    </div>
+  </div>
+  <!--儲水量-->
+  <div class="control-group">
+    <label>儲水量</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.residualco2.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.residualco2.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.residualco2.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.residualco2.problem"/>
+    </div>
+  </div>
+  <!--微霧機-->
+  <div class="control-group">
+    <label>微霧機濾網</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.mistmachinefilter.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.mistmachinefilter.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.mistmachinefilter.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.mistmachinefilter.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>微霧機機油</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.mistmachineoil.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.mistmachineoil.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.mistmachineoil.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.mistmachineoil.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>微霧機皮帶</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.mistmachinestrap.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.mistmachinestrap.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.mistmachinestrap.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.mistmachinestrap.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>壓力</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.pressure.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.pressure.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.pressure.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.pressure.problem"/>
+    </div>
+  </div>
+  <!--CO2-->
+  <div class="control-group">
+    <label>CO2剩餘量</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.residualco2.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.residualco2.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.residualco2.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.residualco2.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>CO2吸附劑</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.sodalimeco2.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.sodalimeco2.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.sodalimeco2.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.sodalimeco2.problem"/>
+    </div>
+  </div>
+  <!-- 幫浦-->
+  <div class="control-group">
+    <label>加壓幫浦</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.pressurepumps.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.pressurepumps.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.pressurepumps.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.pressurepumps.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>抽水幫浦</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.waterpumps.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.waterpumps.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.waterpumps.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.waterpumps.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>空調</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.aircondition.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.aircondition.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.aircondition.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.aircondition.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>LED</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.led.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.led.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.led.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.led.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>氣霧噴施系統</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.aerosolspraydevice.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.aerosolspraydevice.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.aerosolspraydevice.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.aerosolspraydevice.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>廢液回收系統</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.wasterecycleequip.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.wasterecycleequip.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.wasterecycleequip.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.wasterecycleequip.problem"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>環境維護</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.environment.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.environment.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.environment.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.environment.problem"/>
+    </div>
+  </div>
+  <!-- plant record-->
+  <div class="control-group">
+    <label>植物生長記錄</label>
+    <div class="btn-group">
+      <button ng-model="dailyreport.checked.plantrecord.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+      <button ng-model="dailyreport.checked.plantrecord.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+    </div>
+    <div ng-show="!dailyreport.checked.plantrecord.status" class="problem">
+      <label>紀錄</label>
+      <input type="text" ng-model="dailyreport.checked.plantrecord.problem"/>
+    </div>
+  </div>
+  <div class="form-actions">
+    <div class="control-group">		<a href="#/" class="btn btn-large btn-large">Cancel</a></div>
+    <div class="control-group">		<a href="#/new/step1" ng-clikc="update()" class="btn btn-large btn-info btn-large">上一步</a></div>
+    <div class="control-group"><a href="#/new/step3" ng-clikc="update()" class="btn btn-large btn-info btn-large">下一步</a></div>
+  </div>
+</form>
