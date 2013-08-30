@@ -1,0 +1,8 @@
+
+<ul ng-controller="BreadcrumbCtrl" class="breadcrumb">
+  <li><a href="#/">栽培室</a></li>
+  <li ng-show="room"><span class="divider">/</span><a href="#/{{room.id}}/sheives">{{room.name}} </a></li>
+  <li ng-show="shelf"><span class="divider">/</span>{{shelf.name}}   </li>
+  <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.pos}}/box">{{level.name}}</a></li>
+  <li ng-show="box"><span class="divider">/</span>{{box}}</li>
+</ul>

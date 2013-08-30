@@ -1,0 +1,17 @@
+
+<table ng-controller="listCtrl" class="table">
+  <thead>
+    <th>Shelf</th>
+    <th>Level</th>
+    <th>Box</th>
+    <th>Plants</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="box in boxes">
+      <td>{{box.shelf}}</td>
+      <td>{{box.level}}</td>
+      <td>{{box.name}} </td>
+      <td>{{box.plants}}</td>
+    </tr>
+  </tbody>
+</table>

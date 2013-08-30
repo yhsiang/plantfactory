@@ -1,13 +1,10 @@
 
-<ul class="breadcrumb">
-  <li><a href="#/">栽培室</a><span class="divider">/</span></li>
-  <li><a href="#/{{room}}/sheives">{{room}} </a><span class="divider">/</span></li>
-  <li>
-     
-    {{shelf}}   <span class="divider">/</span>
-  </li>
-  <li><a href="#/{{room}}/{{shelf}}/{{level}}/box">{{level}}</a><span class="divider">/ </span></li>
-  <li>{{box}}</li>
+<ul ng-controller="BreadcrumbCtrl" class="breadcrumb">
+  <li><a href="#/">栽培室</a></li>
+  <li ng-show="room"><span class="divider">/</span><a href="#/{{room.id}}/sheives">{{room.name}} </a></li>
+  <li ng-show="shelf"><span class="divider">/</span>{{shelf.name}}   </li>
+  <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.id}}/boxes">{{level.name}}</a></li>
+  <li ng-show="box"><span class="divider">/</span>{{box.name}}</li>
 </ul>
 <ul class="plants">
   <li ng-repeat="plant in plants" class="plant">

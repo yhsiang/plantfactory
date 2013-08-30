@@ -67,6 +67,15 @@ var buf = [];
 with (locals || {}) {
 var interp;
 var __indent = [];
+buf.push('\n<ul ng-controller="BreadcrumbCtrl" class="breadcrumb">\n  <li><a href="#/">栽培室</a></li>\n  <li ng-show="room"><span class="divider">/</span><a href="#/{{room.id}}/sheives">{{room.name}} </a></li>\n  <li ng-show="shelf"><span class="divider">/</span>{{shelf.name}}   </li>\n  <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.id}}/boxes">{{level.name}}</a></li>\n  <li ng-show="box"><span class="divider">/</span>{{box.name}}</li>\n</ul>');
+}
+return buf.join("");
+};module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
+attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
+var buf = [];
+with (locals || {}) {
+var interp;
+var __indent = [];
 buf.push('\n<script>(function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,pickAndStore,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);</script>\n<script>filepicker.setKey(\'Aa75iF9P7SlCEoO4ckHs9z\');</script>');
 }
 return buf.join("");
@@ -93,7 +102,7 @@ var buf = [];
 with (locals || {}) {
 var interp;
 var __indent = [];
-buf.push('\n<div class="navbar">\n  <div class="navbar-inner">\n    <div class="container">\n      <ul class="nav">\n        <li><a href="#/"> <i class="icon-list icon-large"></i>瀏覽</a></li>\n        <li><a href="#/room"> <i class="icon-list icon-large"></i>實況</a></li>\n        <li><a href="#/new/step1"> <i class="icon-plus-sign icon-large"></i>新增</a></li>\n        <li><a href="#/plant/order"> <i class="icon-plus-sign icon-large"></i>訂購</a></li>\n      </ul>\n    </div>\n  </div>\n</div>');
+buf.push('\n<div class="navbar">\n  <div class="navbar-inner">\n    <div class="container">\n      <ul class="nav">\n        <li><a href="#/"> <i class="icon-list icon-large"></i>瀏覽</a></li>\n        <li><a href="#/live"> <i class="icon-list icon-large"></i>實況</a></li>\n        <li><a href="#/new/step1"> <i class="icon-plus-sign icon-large"></i>新增</a></li>\n        <li><a href="#/plant/order"> <i class="icon-plus-sign icon-large"></i>訂購</a></li>\n      </ul>\n    </div>\n  </div>\n</div>');
 }
 return buf.join("");
 };module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
@@ -102,7 +111,7 @@ var buf = [];
 with (locals || {}) {
 var interp;
 var __indent = [];
-buf.push('<!DOCTYPE html>\n<html ng-app="plantfactory">\n  <head></head>\n  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">\n  <title>Plant Factory</title>\n  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">\n  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">\n  <link rel="stylesheet" href="/css/app.css"><!--\n  <Le>HTML5 shim, for IE6-8 support of HTML5 elements</Le>--><!--[if lt IE 9]>\n  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->\n  <script src="/js/vendor.js"></script>\n  <script>(function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,pickAndStore,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);</script>\n  <script>filepicker.setKey(\'Aa75iF9P7SlCEoO4ckHs9z\');</script>\n  <script src="/js/app.js"></script>\n  <body>\n    <header>\n      <div class="container">\n        <h1>植物工廠</h1>\n      </div>\n    </header>\n    <div class="navbar">\n      <div class="navbar-inner">\n        <div class="container">\n          <ul class="nav">\n            <li><a href="#/"> <i class="icon-list icon-large"></i>瀏覽</a></li>\n            <li><a href="#/room"> <i class="icon-list icon-large"></i>實況</a></li>\n            <li><a href="#/new/step1"> <i class="icon-plus-sign icon-large"></i>新增</a></li>\n            <li><a href="#/plant/order"> <i class="icon-plus-sign icon-large"></i>訂購</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <div id="content-wrapper" class="container">\n      <div ng-view class="main"></div>\n    </div>\n  </body>\n</html>');
+buf.push('<!DOCTYPE html>\n<html ng-app="plantfactory">\n  <head></head>\n  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">\n  <title>Plant Factory</title>\n  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">\n  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">\n  <link rel="stylesheet" href="/css/app.css"><!--\n  <Le>HTML5 shim, for IE6-8 support of HTML5 elements</Le>--><!--[if lt IE 9]>\n  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->\n  <script src="/js/vendor.js"></script>\n  <script>(function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,pickAndStore,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);</script>\n  <script>filepicker.setKey(\'Aa75iF9P7SlCEoO4ckHs9z\');</script>\n  <script src="/js/app.js"></script>\n  <body>\n    <header>\n      <div class="container">\n        <h1>植物工廠</h1>\n      </div>\n    </header>\n    <div class="navbar">\n      <div class="navbar-inner">\n        <div class="container">\n          <ul class="nav">\n            <li><a href="#/"> <i class="icon-list icon-large"></i>瀏覽</a></li>\n            <li><a href="#/live"> <i class="icon-list icon-large"></i>實況</a></li>\n            <li><a href="#/new/step1"> <i class="icon-plus-sign icon-large"></i>新增</a></li>\n            <li><a href="#/plant/order"> <i class="icon-plus-sign icon-large"></i>訂購</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <div id="content-wrapper" class="container">\n      <div ng-view class="main"></div>\n    </div>\n  </body>\n</html>');
 }
 return buf.join("");
 };module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
@@ -111,7 +120,7 @@ var buf = [];
 with (locals || {}) {
 var interp;
 var __indent = [];
-buf.push('\n<ul class="breadcrumb">\n  <li><a href="#/">栽培室</a><span class="divider">/</span></li>\n  <li><a href="#/{{room}}/sheives">{{room}} </a><span class="divider">/</span></li>\n  <li>\n     \n    {{shelf}}   <span class="divider">/</span>\n  </li>\n  <li><a href="#/{{room}}/{{shelf}}/{{level}}/box">{{level}}</a><span class="divider">/ </span></li>\n  <li>{{box}}</li>\n</ul>\n<ul class="plants">\n  <li ng-repeat="plant in plants" class="plant">\n    <h4 class="name"></h4>\n  </li>\n</ul>');
+buf.push('\n<ul ng-controller="BreadcrumbCtrl" class="breadcrumb">\n  <li><a href="#/">栽培室</a></li>\n  <li ng-show="room"><span class="divider">/</span><a href="#/{{room.id}}/sheives">{{room.name}} </a></li>\n  <li ng-show="shelf"><span class="divider">/</span>{{shelf.name}}   </li>\n  <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.id}}/boxes">{{level.name}}</a></li>\n  <li ng-show="box"><span class="divider">/</span>{{box.name}}</li>\n</ul>\n<ul class="plants">\n  <li ng-repeat="plant in plants" class="plant">\n    <h4 class="name"></h4>\n  </li>\n</ul>');
 }
 return buf.join("");
 };module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
@@ -120,7 +129,25 @@ var buf = [];
 with (locals || {}) {
 var interp;
 var __indent = [];
-buf.push('\n<ul class="breadcrumb">\n  <li><a href="#/">栽培室</a><span class="divider">/</span></li>\n  <li><a href="#/{{room._id.$oid}}/sheives">{{room.name}} </a><span class="divider">/</span></li>\n  <li>\n     \n    {{shelf.name}}  <span class="divider">/</span>\n  </li>\n  <li>{{level.name}}</li>\n</ul>\n<ul class="boxes">\n  <li ng-repeat="box in boxes" class="box"><a href="#/{{room._id.$oid}}/{{shelf._id.$oid}}/{{level.pos}}/{{box._id.$oid}}" class="name"> \n      <h4>{{box.name}}</h4></a></li>\n  <li class="plus"><a ng-click="plus()">\n      <h4>新增栽培箱</h4></a></li>\n</ul>');
+buf.push('\n<ul ng-controller="BreadcrumbCtrl" class="breadcrumb">\n  <li><a href="#/">栽培室</a></li>\n  <li ng-show="room"><span class="divider">/</span><a href="#/{{room.id}}/sheives">{{room.name}} </a></li>\n  <li ng-show="shelf"><span class="divider">/</span>{{shelf.name}}   </li>\n  <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.id}}/boxes">{{level.name}}</a></li>\n  <li ng-show="box"><span class="divider">/</span>{{box.name}}</li>\n</ul>\n<ul class="boxes">\n  <li ng-repeat="box in boxes" class="box"><a href="#/{{room}}/{{shelf}}/{{box.level}}/{{box.id}}" class="name"> \n      <h4>{{box.name}}</h4></a></li>\n  <li class="plus">\n    <button ng-click="plus()" class="btn">\n      <h4>新增栽培箱</h4>\n    </button>\n  </li>\n</ul>');
+}
+return buf.join("");
+};module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
+attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
+var buf = [];
+with (locals || {}) {
+var interp;
+var __indent = [];
+buf.push('\n<table ng-controller="listCtrl" class="table">\n  <thead>\n    <th>Shelf</th>\n    <th>Level</th>\n    <th>Box</th>\n    <th>Plants</th>\n  </thead>\n  <tbody>\n    <tr ng-repeat="box in boxes">\n      <td>{{box.shelf}}</td>\n      <td>{{box.level}}</td>\n      <td>{{box.name}} </td>\n      <td>{{box.plants}}</td>\n    </tr>\n  </tbody>\n</table>');
+}
+return buf.join("");
+};module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
+attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
+var buf = [];
+with (locals || {}) {
+var interp;
+var __indent = [];
+buf.push('<img src="http://admin:123456@192.168.1.178/videostream.cgi?rate=0"/>');
 }
 return buf.join("");
 };module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
@@ -138,7 +165,7 @@ var buf = [];
 with (locals || {}) {
 var interp;
 var __indent = [];
-buf.push('\n<ul class="rooms">\n  <li ng-repeat="room in rooms" class="room"><a ng-href="#/{{room._id.$oid}}/sheives" class="name"> \n      <h2>{{room.name}}</h2></a></li>\n  <li class="plus"><a ng-click="plus()">\n      <h2>新增一間</h2></a></li>\n</ul>');
+buf.push('\n<ul class="rooms">\n  <li ng-repeat="room in rooms" class="room"><a ng-href="#/{{room.id}}/sheives" class="name"> \n      <h2>{{room.name}}</h2></a></li>\n  <li class="plus"><a ng-click="plus()">\n      <h2>新增一間</h2></a></li>\n</ul>');
 }
 return buf.join("");
 };module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
@@ -147,7 +174,7 @@ var buf = [];
 with (locals || {}) {
 var interp;
 var __indent = [];
-buf.push('\n<ul class="breadcrumb">\n  <li><a href="#/">栽培室</a><span class="divider">/</span></li>\n  <li>{{room.name}} </li>\n</ul>\n<ul class="sheives">\n  <li ng-repeat="shelf in sheives" class="shelf">\n    <ul class="name">{{shelf.name}}\n      <li ng-repeat="level in levels" class="level"><a ng-href="#/{{room._id.$oid}}/{{shelf._id.$oid}}/{{level.pos}}/box" class="{{level.pos}}">\n          <h2>{{level.name}}</h2></a></li>\n    </ul>\n  </li>\n  <li class="plus"><a ng-click="plus()">\n      <h4>新增栽培架</h4></a></li>\n</ul>');
+buf.push('\n<ul ng-controller="BreadcrumbCtrl" class="breadcrumb">\n  <li><a href="#/">栽培室</a></li>\n  <li ng-show="room"><span class="divider">/</span><a href="#/{{room.id}}/sheives">{{room.name}} </a></li>\n  <li ng-show="shelf"><span class="divider">/</span>{{shelf.name}}   </li>\n  <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.id}}/boxes">{{level.name}}</a></li>\n  <li ng-show="box"><span class="divider">/</span>{{box.name}}</li>\n</ul>\n<ul class="sheives">\n  <li ng-repeat="shelf in sheives" class="shelf">\n    <ul class="name">{{shelf.name}}\n      <li ng-repeat="level in shelf.levels" class="level"><a ng-href="#/{{shelf.room}}/{{shelf.id}}/{{level.id}}/boxes" class="{{level.pos}}">\n          <h2>{{level.name}}</h2></a></li>\n    </ul>\n  </li>\n  <li class="plus">\n    <button ng-click="plus()" class="btn">\n      <h4>新增栽培架</h4>\n    </button>\n  </li>\n</ul>');
 }
 return buf.join("");
 };

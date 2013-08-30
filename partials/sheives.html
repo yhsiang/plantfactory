@@ -1,15 +1,21 @@
 
-<ul class="breadcrumb">
-  <li><a href="#/">栽培室</a><span class="divider">/</span></li>
-  <li>{{room.name}} </li>
+<ul ng-controller="BreadcrumbCtrl" class="breadcrumb">
+  <li><a href="#/">栽培室</a></li>
+  <li ng-show="room"><span class="divider">/</span><a href="#/{{room.id}}/sheives">{{room.name}} </a></li>
+  <li ng-show="shelf"><span class="divider">/</span>{{shelf.name}}   </li>
+  <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.id}}/boxes">{{level.name}}</a></li>
+  <li ng-show="box"><span class="divider">/</span>{{box.name}}</li>
 </ul>
 <ul class="sheives">
   <li ng-repeat="shelf in sheives" class="shelf">
     <ul class="name">{{shelf.name}}
-      <li ng-repeat="level in levels" class="level"><a ng-href="#/{{room._id.$oid}}/{{shelf._id.$oid}}/{{level.pos}}/box" class="{{level.pos}}">
+      <li ng-repeat="level in shelf.levels" class="level"><a ng-href="#/{{shelf.room}}/{{shelf.id}}/{{level.id}}/boxes" class="{{level.pos}}">
           <h2>{{level.name}}</h2></a></li>
     </ul>
   </li>
-  <li class="plus"><a ng-click="plus()">
-      <h4>新增栽培架</h4></a></li>
+  <li class="plus">
+    <button ng-click="plus()" class="btn">
+      <h4>新增栽培架</h4>
+    </button>
+  </li>
 </ul>

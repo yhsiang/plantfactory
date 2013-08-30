@@ -177,6 +177,9 @@ h1 {
 	width: 150px;
 }
 
+#content-wrapper ul li button {
+  margin-top: 20px;
+}
 
 #content-wrapper ul.plants {
   width: 270px;

@@ -6,12 +6,3 @@
   <li ng-show="level"><span class="divider">/</span><a href="#/{{room.id}}/{{shelf.id}}/{{level.id}}/boxes">{{level.name}}</a></li>
   <li ng-show="box"><span class="divider">/</span>{{box.name}}</li>
 </ul>
-<ul class="boxes">
-  <li ng-repeat="box in boxes" class="box"><a href="#/{{room}}/{{shelf}}/{{box.level}}/{{box.id}}" class="name"> 
-      <h4>{{box.name}}</h4></a></li>
-  <li class="plus">
-    <button ng-click="plus()" class="btn">
-      <h4>新增栽培箱</h4>
-    </button>
-  </li>
-</ul>
