@@ -1,0 +1,19 @@
+
+<div class="msg-pic"><img src="/img/datagb.png" class="log"/></div>
+<div class="nav-bar">
+  <div class="container">
+    <ul class="navtabs">
+      <li> <a class="mybtn">草莓室</a></li>
+      <li> <a class="mybtn">萵苣室</a></li>
+    </ul>
+  </div>
+</div>
+<div id="main">
+  <div class="container">
+    <div ng-controller="LogCtrl" class="chart-control">
+      <div ng-repeat="block in blocks" ng-class="{first: $first, last: $last}" class="block">
+        <div class="img {{block.class}}">{{block.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>

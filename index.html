@@ -18,24 +18,21 @@
   <script src="/js/app.js"></script>
   <body>
     <header>
-      <div class="container">
-        <h1>植物工廠</h1>
+      <div class="container"><img src="/img/logo.png">
+        <ul class="pull-right">
+          <li class="icon home"><a href="#/">Home</a></li>
+          <li class="icon log"><a href="#/log">資料統計</a></li>
+          <li class="icon camera"><a href="#/camera">工廠影像</a></li>
+          <li class="icon issue"><a href="#/issues">現廠紀錄</a></li>
+        </ul>
       </div>
+      <div class="blue-bg"></div>
     </header>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <ul class="nav">
-            <li><a href="#/"> <i class="icon-list icon-large"></i>瀏覽</a></li>
-            <li><a href="#/live"> <i class="icon-list icon-large"></i>實況</a></li>
-            <li><a href="#/new/step1"> <i class="icon-plus-sign icon-large"></i>新增</a></li>
-            <li><a href="#/plant/order"> <i class="icon-plus-sign icon-large"></i>訂購</a></li>
-          </ul>
-        </div>
+    <div id="content-wrapper" ng-view></div>
+    <div id="footer">
+      <div class="container">
+        <div class="title pull-right">Ubuntu Life Co., LTD　吾邦土智慧生活股份有限公司</div>
       </div>
-    </div>
-    <div id="content-wrapper" class="container">
-      <div ng-view class="main"></div>
     </div>
   </body>
 </html>

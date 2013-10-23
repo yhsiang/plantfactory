@@ -1,0 +1,85 @@
+
+<div ng-controller="PageCtrl" class="btn-group"><a ng-click="show('equiment')" class="btn">設備管理</a><a ng-click="show('projects')" class="btn">種植計劃</a></div>
+<div ng-controller="EquimentCtrl" ng-show="page.equiment">
+  <h3>	栽培室</h3>
+  <ul ng-repeat="room in equiment.rooms">
+    <li>{{room.name}}</li>
+  </ul>
+  <h3>栽培架</h3>
+  <ul ng-repeat="shelf in equiment.sheives">
+    <li>{{shelf.name}}</li>
+  </ul>
+  <h3>栽培箱</h3>
+  <ul ng-repeat="box in equiment.boxes">
+    <li>{{box.name}}</li>
+  </ul>
+</div>
+<div class="row-fluid">
+  <div class="span4">
+    <ul ng-controller="ProjectsCtrl" ng-show="page.projects" class="nav nav-tabs nav-stacked">
+      <li><a ng-click="show('settings')">環境設定</a></li>
+      <li><a ng-click="show('places')">室內擺設</a></li>
+      <li><a ng-click="show('plants')">植物生長與管理</a></li>
+      <li><a ng-click="show('problems')">異常與改善</a></li>
+      <li><a ng-click="show('records')">熟葉成長紀錄</a></li>
+      <li><a ng-click="show('capacities')">產能</a></li>
+      <li><a ng-click="show('cals')">硝酸鹽含量測定</a></li>
+    </ul>
+  </div>
+  <div ng-controller="SettingsCtrl" ng-show="project.settings &amp;&amp; page.projects" class="span8">
+    <div class="btn-group"><a ng-click="show('list')" class="btn">列表</a><a ng-click="show('new')" class="btn">新增</a></div>
+    <table ng-show="!newone" class="table">
+      <thead>
+        <tr>
+          <th>名稱</th>
+          <th>植物</th>
+          <th>日溫</th>
+          <th>夜溫</th>
+          <th>EC值</th>
+          <th>定比器</th>
+          <th>養液</th>
+          <th>噴霧時間</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="room in rooms">
+          <td>{{room.name}}</td>
+          <td>{{room.plants}}</td>
+          <td>{{room.dayTemp}}</td>
+          <td>{{room.nightTemp}}</td>
+          <td>{{room.ecvalue}}</td>
+          <td>{{room.ratio.thick}}: {{room.ratio.thin}}</td>
+          <td>{{room.nutrient.primary}}: {{room.nutrient.water}}</td>
+          <td>{{room.spraytime.stop}}: {{room.spraytime.spray}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <form ng-show="newone">
+      <label>栽培室名稱</label>
+      <input ng-model="room.name"/>
+      <label>	目前材料</label>
+      <input ng-model="plants"/>
+      <label>	日溫</label>
+      <input ng-model="room.dayTemp" type="number"/>
+      <label>夜溫</label>
+      <input ng-model="room.nightTemp" type="number"/>
+      <label>定比器</label>
+      <label>粗調節輪</label>
+      <input ng-model="room.ratio.thick" type="number"/>
+      <label>細調節輪</label>
+      <input ng-model="room.ratio.thin" type="number"/>
+      <label>EC值</label>
+      <input ng-model="room.ecvalue" type="number"/>
+      <label>養液</label>
+      <label>母液</label>
+      <input ng-model="room.nutrient.primary" type="number"/>
+      <label>水</label>
+      <input ng-model="room.nutrient.water" type="number"/>
+      <label>停止時間</label>
+      <input ng-model="room.spraytime.stop" type="number"/>
+      <label>噴霧時間</label>
+      <input ng-model="room.spraytime.spray" type="number"/>
+      <button ng-click="add()">儲存</button>
+    </form>
+  </div>
+</div>

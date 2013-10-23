@@ -1,0 +1,158 @@
+
+<div class="container">
+  <form ng-controller="FormCtrl" ng-init="init()" class="check">
+    <div class="control-group">
+      <div class="label">電表流量</div>
+      <input ng-model="report.elecharge"/>
+    </div>
+    <div class="control-group">
+      <div class="label">水表流量</div>
+      <input ng-model="report.watercharge"/>
+    </div>
+    <!--純水濾芯-->
+    <div class="control-group">
+      <div class="label">純水濾芯</div>
+      <div class="btn-group">
+        <button ng-model="report.waterfilter.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.waterfilter.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.waterfilter.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.waterfilter.problem" placeholder="請記錄"/>
+    </div>
+    <!--儲水量-->
+    <div class="control-group">
+      <div class="label">儲水量</div>
+      <div class="btn-group">
+        <button ng-model="report.waterstorage.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.waterstorage.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.waterstorage.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.waterstorage.problem" placeholder="請記錄"/>
+    </div>
+    <!--微霧機-->
+    <div class="control-group">
+      <div class="label">微霧機</div>
+      <div class="btn-group">
+        <button ng-model="report.mistmachine.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.mistmachine.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.mistmachine.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.mistmachine.problem" placeholder="請記錄"/>
+    </div>
+    <!--壓力-->
+    <div class="control-group">
+      <div class="label">壓力</div>
+      <div class="btn-group">
+        <button ng-model="report.pressure.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.pressure.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.pressure.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.pressure.problem" placeholder="請記錄"/>
+    </div>
+    <!--CO2機器-->
+    <div class="control-group">
+      <div class="label">CO<sub>2</sub>機器</div>
+      <div class="btn-group">
+        <button ng-model="report.co2device.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.co2device.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.co2device.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.co2device.problem" placeholder="請記錄"/>
+    </div>
+    <!--加壓幫浦-->
+    <div class="control-group">
+      <div class="label">加壓幫浦</div>
+      <div class="btn-group">
+        <button ng-model="report.pressurepumps.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.pressurepumps.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.pressurepumps.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.pressurepumps.problem" placeholder="請記錄"/>
+    </div>
+    <!--抽水幫浦-->
+    <div class="control-group">
+      <div class="label">抽水幫浦</div>
+      <div class="btn-group">
+        <button ng-model="report.waterpumps.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.waterpumps.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.waterpumps.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.waterpumps.problem" placeholder="請記錄"/>
+    </div>
+    <!--空調-->
+    <div class="control-group">
+      <div class="label">空調</div>
+      <div class="btn-group">
+        <button ng-model="report.aircondition.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.aircondition.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.aircondition.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.aircondition.problem" placeholder="請記錄"/>
+    </div>
+    <!--LED-->
+    <div class="control-group">
+      <div class="label">LED</div>
+      <div class="btn-group">
+        <button ng-model="report.led.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.led.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.led.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.led.problem" placeholder="請記錄"/>
+    </div>
+    <!--氣霧系統-->
+    <div class="control-group">
+      <div class="label">氣霧系統</div>
+      <div class="btn-group">
+        <button ng-model="report.spraydevice.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.spraydevice.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.spraydevice.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.spraydevice.problem" placeholder="請記錄"/>
+    </div>
+    <!--廢液回收-->
+    <div class="control-group">
+      <div class="label">廢液回收</div>
+      <div class="btn-group">
+        <button ng-model="report.waterrecycle.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.waterrecycle.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.waterrecycle.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.waterrecycle.problem" placeholder="請記錄"/>
+    </div>
+    <!--環境維護-->
+    <div class="control-group">
+      <div class="label">環境維護</div>
+      <div class="btn-group">
+        <button ng-model="report.environment.status" btn-radio="true" class="btn btn-large btn-success">正常</button>
+        <button ng-model="report.environment.status" btn-radio="false" class="btn btn-large btn-danger">異常紀錄</button>
+      </div>
+    </div>
+    <div ng-show="!report.environment.status" class="control-group problem">
+      <div class="label info">紀錄</div>
+      <input type="text" ng-model="report.environment.problem" placeholder="請記錄"/>
+    </div>
+    <div class="form-action"><a href="#/factory" class="btn">取消</a><a ng-click="add()" class="btn primary-btn">儲存</a></div>
+  </form>
+</div>
