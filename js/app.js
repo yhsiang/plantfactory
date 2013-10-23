@@ -18,14 +18,20 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', 'angularFire',
 			, todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1)
 			, startTime = todayStart.getTime()
 			, endTime = todayEnd.getTime();
-		console.log(startTime);
-		console.log(endTime);
+		//console.log(startTime);
+		//console.log(endTime);
 		var ref = new Firebase('https://ubuntu20.firebaseIO.com/plantfactory/0/reports');
 		
-		angularFire(ref.startAt(startTime), $scope, 'report', {});
-	
-		ref.once('value', function (snapshot) {
-				console.log(snapshot.val());
+		var promise = angularFire(ref.startAt(startTime), $scope, 'reports', []);
+		promise.then(function () {
+			var i = 0
+			angular.forEach($scope.reports, function (obj, index) {
+				if(i== 0) {
+					$scope.report = obj;
+					$scope.checktime = new Date(obj.time);
+				}
+				i++;
+			})
 		});
 		//*/
 		function updateTime () {
@@ -47,7 +53,8 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', 'angularFire',
 										, { name: '光照', class: 'par',value: 400}
 										, { name: 'PH', class: 'ph',value: 6.5}
 										, { name: 'EC', class: 'ec',value: 2.3}];
-
+		$scope.items = [];
+/*
 		$scope.items = [ { name: '電量', class: 'elecharge', value: 800}
 										, { name: '水量', class: 'watercharge', value: 23}
 										, { name: '純水濾芯', class: 'waterfilter', value: '正常'}
@@ -63,6 +70,7 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', 'angularFire',
 										, { name: '廢液回收', class: 'waterrecycle',value: '正常'}
 										, { name: '環境維護', class: 'environment',value: '正常'}
 										];
+//*/
 		$scope.pos = function (index) {
 			if(index%7 == 0) return 'first';
 			if(index%7 == 6) return 'last';

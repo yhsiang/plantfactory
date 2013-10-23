@@ -195,6 +195,7 @@ header .blue-bg {
 	padding-top: 11px;
 	font-weight: bold;
 	padding-left: 11px;
+	padding-bottom: 9px;
 }
 
 #content-wrapper .time .mybtn {
@@ -204,7 +205,7 @@ header .blue-bg {
 #content-wrapper .msg {
 	background: #333;
 	font-size: large;
-	padding-top: 20px;
+	padding-top: 10px;
 	font-weight: bold;
 	padding-left: 11px;
 	padding-bottom: 10px;
@@ -331,6 +332,42 @@ h3.blue {
 	background-image: url(/img/keep-01.png);
 }
 
+.waterfilter-error {
+	background-image: url(/img/r-out-01.png);
+}
+.waterstorage-error {
+	background-image: url(/img/r-waterme-01.png);
+}
+.mistmachine-error {
+	background-image: url(/img/r-wu-01.png);
+}
+.pressure-error {
+	background-image: url(/img/r-power-01.png);
+}
+.co2device-error {
+	background-image: url(/img/r-co2mesh-01.png);
+}
+.pressurepumps-error {
+	background-image: url(/img/r-powermesh-01.png);
+}
+.waterpumps-error {
+	background-image: url(/img/r-out\ water-01.png);
+}
+.aircondition-error {
+	background-image: url(/img/r-cold-01.png);
+}
+.led-error {
+	background-image: url(/img/r-led-01.png);
+}
+.spraydevice-error {
+	background-image: url(/img/r-air-01.png);
+}
+.waterrecycle-error {
+	background-image: url(/img/r-dirty\ water-01.png);
+}
+.environment-error {
+	background-image: url(/img/r-keep-01.png);
+}
 .chart-control {
 	display: flex;
 	justify-content: space-between;
