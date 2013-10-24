@@ -9,16 +9,16 @@
   </div>
   <div class="room">
     <h3 class="blue">萵苣室</h3>
-    <div ng-repeat="block in blocks" ng-class="{first: $first, last: $last}" class="block">
-      <div class="img {{block.class}}">{{block.name}}</div>
-      <div class="text">{{block.value}}</div>
+    <div ng-repeat="sensor in room1" ng-class="{first: $first, last: $last}" class="block">
+      <div class="img {{sensor.class}}">{{sensor.name}}</div>
+      <div class="text">{{sensor.value}}</div>
     </div>
   </div>
   <div class="room">
     <h3 class="blue">草莓室</h3>
-    <div ng-repeat="block in blocks" ng-class="{first: $first, last: $last}" class="block">
-      <div class="img {{block.class}}">{{block.name}}</div>
-      <div class="text">{{block.value}}</div>
+    <div ng-repeat="sensor in room2" ng-class="{first: $first, last: $last}" class="block">
+      <div class="img {{sensor.class}}">{{sensor.name}}</div>
+      <div class="text">{{sensor.value}}</div>
     </div>
   </div>
   <div class="report">

@@ -357,7 +357,7 @@ h3.blue {
 	background-image: url(/img/r-cold-01.png);
 }
 .led-error {
-	background-image: url(/img/r-led-01.png);
+	background-image: url(/img/r-led.png);
 }
 .spraydevice-error {
 	background-image: url(/img/r-air-01.png);
@@ -425,7 +425,7 @@ h3.blue {
 }
 
 .block .text { 
-	font-size: 36px;
+	font-size: 30px;
   background-color: rgb(0, 51, 102);
   text-align: center;
   height: 32px;

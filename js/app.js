@@ -11,8 +11,8 @@ pf.config(function ($routeProvider) {
 			.otherwise({redirectTo: '/factory'});
 	});
 
-pf.controller('IndexCtrl', ['$scope', '$timeout', 'angularFire',
-	function ($scope, $timeout, angularFire) {
+pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
+	function ($scope, $timeout, $http, angularFire) {
 		var now = new Date()
 			,	todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
 			, todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1)
@@ -44,8 +44,16 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', 'angularFire',
           updateLater(); // schedule another update
         }, 1000);
     }
+		callback = function (res) {
+			console.log(res);
+			$scope.room1 = res.result[0]["121101001"];
+			$scope.room2 = res.result[1]["121101002"];
+		}	
 		$scope.msg = '萵苣室　CO2在2013/10/02　15:10　異常';
 
+		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/index.php')
+			.success(callback);
+/*
 		$scope.blocks = [ { name: 'CO2', class: 'co2', value: 800}
 										, { name: '水溫', class: 'water', value: 23}
 										, { name: '室溫', class: 'in', value: 28}
@@ -53,6 +61,7 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', 'angularFire',
 										, { name: '光照', class: 'par',value: 400}
 										, { name: 'PH', class: 'ph',value: 6.5}
 										, { name: 'EC', class: 'ec',value: 2.3}];
+//*/
 		$scope.items = [];
 /*
 		$scope.items = [ { name: '電量', class: 'elecharge', value: 800}
