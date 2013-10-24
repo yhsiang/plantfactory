@@ -33,7 +33,6 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 				i++;
 			})
 		});
-		//*/
 		function updateTime () {
 			$scope.now = new Date();
 		}
@@ -53,33 +52,9 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 
 		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/index.php')
 			.success(callback);
-/*
-		$scope.blocks = [ { name: 'CO2', class: 'co2', value: 800}
-										, { name: '水溫', class: 'water', value: 23}
-										, { name: '室溫', class: 'in', value: 28}
-										, { name: '濕度', class: 'rh',value: '58%'}
-										, { name: '光照', class: 'par',value: 400}
-										, { name: 'PH', class: 'ph',value: 6.5}
-										, { name: 'EC', class: 'ec',value: 2.3}];
-//*/
+
 		$scope.items = [];
-/*
-		$scope.items = [ { name: '電量', class: 'elecharge', value: 800}
-										, { name: '水量', class: 'watercharge', value: 23}
-										, { name: '純水濾芯', class: 'waterfilter', value: '正常'}
-										, { name: '儲水量', class: 'waterstorage',value: '正常'}
-										, { name: '微霧機', class: 'mistmachine',value: '正常'}
-										, { name: '壓力', class: 'pressure',value: '正常'}
-										, { name: 'CO2機器', class: 'co2device',value: '正常'}
-										, { name: '加壓幫浦', class: 'pressurepumps',value: '正常'}
-										, { name: '抽水幫浦', class: 'waterpumps',value: '正常'}
-										, { name: '空調', class: 'aircondition',value: '正常'}
-										, { name: 'LED', class: 'led',value: '正常'}
-										, { name: '氣霧系統', class: 'spraydevice',value: '正常'}
-										, { name: '廢液回收', class: 'waterrecycle',value: '正常'}
-										, { name: '環境維護', class: 'environment',value: '正常'}
-										];
-//*/
+
 		$scope.pos = function (index) {
 			if(index%7 == 0) return 'first';
 			if(index%7 == 6) return 'last';
@@ -121,17 +96,110 @@ pf.controller('FormCtrl',['$scope', '$location', 'angularFire',
 	}
 ]);
 
-pf.controller('LogCtrl', ['$scope',
-	function ($scope) {
-		$scope.blocks = [ { name: 'CO2', class: 'co2', value: 800}
-		, { name: '水溫', class: 'water', value: 23}
-		, { name: '室溫', class: 'in', value: 28}
-		, { name: '濕度', class: 'rh',value: '58%'}
-		, { name: '光照', class: 'par',value: 400}
-		, { name: 'PH', class: 'ph',value: 6.5}
-		, { name: 'EC', class: 'ec',value: 2.3}];
-	}
-]);
+pf.controller('LogCtrl', ['$scope', '$http',
+	function ($scope, $http) {
+		$scope.field = "co2";
+		callback = function (res) {
+			$scope.room1 = res.result[0]["121101001"];
+			$scope.room2 = res.result[0]["121101002"];
+			$scope.room = $scope.room1;
+			$scope.chart = $scope.room1[0]["co2"];
+			drawChart($scope.chart);
+		}
+		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/log.php')
+		.success(callback);
+		function xAxisTitle (type) {
+			switch(type) {
+				case 'par': return '光合作用有效程度 (PAR)';
+				case 'in': return '室溫 (\u2103)';
+				case 'rh': return '相對濕度';
+				case 'ph': return 'PH值';
+				case 'ec': return '電導度';
+				case 'water': return '水溫 (\u2103)';
+				case 'co2': return 'CO2濃度';
+			}
+		}
+		function  ydomain(type) {
+			switch(type) {
+				case 'par': return [0,450];
+				case 'in': return [0,100];
+				case 'rh': return [0,100];
+				case 'ph': return [-4,10];
+				case 'ec': return [0,10];
+				case 'water': return [0,100];
+				case 'co2': return [0,1000];
+			};
+		};
+		$scope.switch = function (field) {
+			$scope.field = field;
+			$scope.chart = $scope.room[0][field];
+			drawChart($scope.chart);
+		}
+		var margin = {top: 20, right: 20, bottom: 30, left: 40},
+		width = 680 - margin.left - margin.right,
+		height = 250 - margin.top - margin.bottom;
+
+  //var parseDate = d3.time.format("%d-%b-%y").parse;
+
+  	var svg = d3.select(".historyChart").append('svg')
+  	.attr("width", width + margin.left + margin.right)
+  	.attr("height", height + margin.top + margin.bottom)
+  	.append("g")
+  	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  //d3.tsv("/data/data.tsv", function(error, data) {
+  	var drawChart = function(data) {  
+  		var x = d3.time.scale()
+  		.range([0, width]);
+
+  		var y = d3.scale.linear()
+  		.domain(ydomain($scope.field))
+  		.range([height, 0])
+
+  		var xAxis = d3.svg.axis()
+  		.scale(x)
+  		.orient("bottom");
+
+  		var yAxis = d3.svg.axis()
+  		.scale(y)
+  		.orient("left");
+
+  		var line = d3.svg.line()
+  		.x(function(d) { return x(d.Time); })
+  		.y(function(d) { return y(d.Value); });	
+  		data.forEach(function(d) {
+  			d.Time = new Date(d.Time);
+  			d.Value = +d.Value;
+  		});
+  		x.domain(d3.extent(data, function(d) { return d.Time; }));
+//    y.domain(d3.extent(data, function(d) { return d.Value; }));
+			svg.selectAll("g").data([]).exit().remove()
+			svg.selectAll("path").data([]).exit().remove()
+			
+			svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
+
+			svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis)
+				.append("text")
+       // .attr("transform", "rotate(-90)")
+       .attr("x", 60+xAxisTitle($scope.field).length*10)
+       .attr("y", -10)
+       .attr("dy", ".71em")
+       .style("text-anchor", "end")
+       .text(xAxisTitle($scope.field));
+
+      svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+     };
+
+   }
+   ]);
 pf.controller('CamCtrl', ['$scope', 
 	function ($scope) {
 		

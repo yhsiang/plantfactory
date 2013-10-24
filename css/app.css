@@ -567,3 +567,24 @@ h3.blue {
 .btn-danger.active {
 	background-color: #800;
 }
+
+.historyChart {
+  width: 800px;
+}
+.historyChart svg {
+  margin-left: 10px;
+}
+.axis .tick {
+  font-size: 10px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}

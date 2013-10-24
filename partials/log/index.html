@@ -11,9 +11,28 @@
 <div id="main">
   <div class="container">
     <div ng-controller="LogCtrl" class="chart-control">
-      <div ng-repeat="block in blocks" ng-class="{first: $first, last: $last}" class="block">
-        <div class="img {{block.class}}">{{block.name}}</div>
+      <div class="block first">
+        <div ng-click="switch('par')" class="img par"></div>
+      </div>
+      <div class="block">
+        <div ng-click="switch('in')" class="img in"></div>
+      </div>
+      <div class="block">
+        <div ng-click="switch('rh')" class="img rh"></div>
+      </div>
+      <div class="block">
+        <div ng-click="switch('ph')" class="img ph"></div>
+      </div>
+      <div class="block">
+        <div ng-click="switch('ec')" class="img ec"></div>
+      </div>
+      <div class="block">
+        <div ng-click="switch('water')" class="img water"></div>
+      </div>
+      <div class="block last">
+        <div ng-click="switch('co2')" class="img co2"></div>
       </div>
     </div>
+    <div class="historyChart"></div>
   </div>
 </div>
