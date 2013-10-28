@@ -5,7 +5,7 @@ pf.config(function ($routeProvider) {
 		$routeProvider
 			.when('/factory', {templateUrl:'/partials/index.html'})
 			.when('/factory/check/add', {templateUrl:'/partials/check/form.html'})
-			.when('/log', {templateUrl: '/partials/log/index.html'})
+			.when('/log', {templateUrl: '/partials/log/index.html', controller: 'LogCtrl'})
 			.when('/camera', {templateUrl:'/partials/live/index.html', controller: 'CamCtrl'})
 			.when('/issues', {templateUrl:'/partials/issues/index.html'})
 			.otherwise({redirectTo: '/factory'});
@@ -13,21 +13,27 @@ pf.config(function ($routeProvider) {
 
 pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 	function ($scope, $timeout, $http, angularFire) {
+		$scope.check = {today: false, am: false, pm: false};
 		var now = new Date()
 			,	todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
 			, todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1)
-			, startTime = todayStart.getTime()
-			, endTime = todayEnd.getTime();
-		//console.log(startTime);
-		//console.log(endTime);
+			, midStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12);
 		var ref = new Firebase('https://ubuntu20.firebaseIO.com/plantfactory/0/reports');
 		
-		var promise = angularFire(ref.startAt(startTime), $scope, 'reports', []);
+		var promise = angularFire(ref.limit(1), $scope, 'reports', []);
 		promise.then(function () {
 			var i = 0
 			angular.forEach($scope.reports, function (obj, index) {
 				if(i== 0) {
 					$scope.report = obj;
+					if(obj.time > midStart.getTime()) {
+						$scope.check.am = false;
+						$scope.check.pm = true;
+						$scope.check.today = true;
+					} else if (obj.time > todayStart.getTime()) {
+						$scope.check.am =true;
+						$scope.check.today = true;
+					}
 					$scope.checktime = new Date(obj.time);
 				}
 				i++;
@@ -44,7 +50,6 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
         }, 1000);
     }
 		callback = function (res) {
-			console.log(res);
 			$scope.room1 = res.result[0]["121101001"];
 			$scope.room2 = res.result[1]["121101002"];
 		}	
@@ -101,13 +106,16 @@ pf.controller('LogCtrl', ['$scope', '$http',
 		$scope.field = "co2";
 		callback = function (res) {
 			$scope.room1 = res.result[0]["121101001"];
-			$scope.room2 = res.result[0]["121101002"];
+			$scope.room2 = res.result[1]["121101002"];
 			$scope.room = $scope.room1;
 			$scope.chart = $scope.room1[0]["co2"];
 			drawChart($scope.chart);
 		}
-		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/log.php')
-		.success(callback);
+		function getData(day) {
+			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/log.php', {params: {q: day}})
+				.success(callback);
+		}
+		getData('day');
 		function xAxisTitle (type) {
 			switch(type) {
 				case 'par': return '光合作用有效程度 (PAR)';
@@ -130,6 +138,14 @@ pf.controller('LogCtrl', ['$scope', '$http',
 				case 'co2': return [0,1000];
 			};
 		};
+		$scope.show = function (day) {
+			getData(day)
+		}
+		$scope.switchRoom = function (room) {
+			$scope.room = (room == 'room2') ? $scope.room2 : $scope.room1;
+			$scope.chart = $scope.room[0][$scope.field];
+			drawChart($scope.chart);
+		}
 		$scope.switch = function (field) {
 			$scope.field = field;
 			$scope.chart = $scope.room[0][field];
@@ -166,11 +182,15 @@ pf.controller('LogCtrl', ['$scope', '$http',
 
   		var line = d3.svg.line()
   		.x(function(d) { return x(d.Time); })
-  		.y(function(d) { return y(d.Value); });	
+  		.y(function(d) { return y(d.Value); });
+
+
   		data.forEach(function(d) {
+  			//console.log(d.Time);
   			d.Time = new Date(d.Time);
   			d.Value = +d.Value;
   		});
+  		//*/
   		x.domain(d3.extent(data, function(d) { return d.Time; }));
 //    y.domain(d3.extent(data, function(d) { return d.Value; }));
 			svg.selectAll("g").data([]).exit().remove()

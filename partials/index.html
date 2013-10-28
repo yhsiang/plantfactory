@@ -23,65 +23,67 @@
   </div>
   <div class="report">
     <div class="title"> 
-      <h3>工廠情況</h3><a ng-show="false" class="mybtn">修改</a><a class="time-tab">上午</a><a class="time-tab">下午</a>
+      <h3>工廠情況</h3><a ng-show="false" class="mybtn">修改</a><a ng-show="check.am || check.pm" class="time-tab">上午</a><a ng-show="check.pm" class="time-tab">下午</a>
       <h4 class="pull-right">檢查時間: {{checktime | date: 'yyyy/MM/dd HH:mm'}}</h4>
     </div>
-    <div class="block item first">
-      <div class="img elecharge">電量</div>
-      <div class="text">{{report.elecharge}}</div>
+    <div ng-show="check.today">
+      <div class="block item first">
+        <div class="img elecharge">電量</div>
+        <div class="text">{{report.elecharge}}</div>
+      </div>
+      <div class="block item">
+        <div class="img watercharge">水量</div>
+        <div class="text">{{report.watercharge}}</div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'waterfilter', false: 'waterfilter-error'}[report.waterfilter.status]" class="img">純水濾芯</div>
+        <div class="text">{{report.waterfilter.problem}}</div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'waterstorage', false: 'waterstorage-error'}[	report.waterstorage.status]" class="img">儲水量</div>
+        <div class="text"> </div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'mistmachine', false: 'mistmachine-error'}[report.mistmachine.status]" class="img">微霧機</div>
+        <div class="text"> </div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'pressure', false: 'pressure-error'}[report.pressure.status]" class="img">壓力</div>
+        <div class="text"></div>
+      </div>
+      <div class="block item last">
+        <div ng-class="{true: 'co2device', false: 'co2device-error'}[report.co2device.status]" class="img">CO2機器</div>
+        <div class="text"></div>
+      </div>
+      <div class="block item first">
+        <div ng-class="{true: 'pressurepumps', false: 'pressurepumps-error'}[	report.pressurepumps.status]" class="img">加壓幫浦</div>
+        <div class="text">																					</div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'waterpumps', false: 'waterpumps-error'}[report.waterpumps.status]" class="img">抽水幫浦</div>
+        <div class="text"></div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'aircondition', false: 'aircondition-error'}[	report.aircondition.status]" class="img">空調</div>
+        <div class="text">{{report.aircondition.problem}}</div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'led', false: 'led-error'}[report.led.status]" class="img">	LED</div>
+        <div class="text"> </div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'spraydevice', false: 'spraydevice-error'}[report.spraydevice.status]" class="img">氣霧系統</div>
+        <div class="text"> </div>
+      </div>
+      <div class="block item">
+        <div ng-class="{true: 'waterrecycle', false: 'waterrecycle-error'}[	report.waterrecycle.status]" class="img">廢液回收</div>
+        <div class="text"></div>
+      </div>
+      <div ng-show="check.today" class="block item last">
+        <div ng-class="{true: 'environment', false: 'environment-error'}[report.environment.status]" class="img">環境維護</div>
+        <div class="text"></div>
+      </div>
     </div>
-    <div class="block item">
-      <div class="img watercharge">水量</div>
-      <div class="text">{{report.watercharge}}</div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'waterfilter', false: 'waterfilter-error'}[report.waterfilter.status]" class="img">純水濾芯</div>
-      <div class="text">{{report.waterfilter.problem}}</div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'waterstorage', false: 'waterstorage-error'}[report.waterstorage.status]" class="img">儲水量</div>
-      <div class="text"> </div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'mistmachine', false: 'mistmachine-error'}[report.mistmachine.status]" class="img">微霧機</div>
-      <div class="text"> </div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'pressure', false: 'pressure-error'}[report.pressure.status]" class="img">壓力</div>
-      <div class="text"></div>
-    </div>
-    <div class="block item last">
-      <div ng-class="{true: 'co2device', false: 'co2device-error'}[report.co2device.status]" class="img">CO2機器</div>
-      <div class="text"></div>
-    </div>
-    <div class="block item first">
-      <div ng-class="{true: 'pressurepumps', false: 'pressurepumps-error'}[report.pressurepumps.status]" class="img">加壓幫浦</div>
-      <div class="text">																					</div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'waterpumps', false: 'waterpumps-error'}[report.waterpumps.status]" class="img">抽水幫浦</div>
-      <div class="text"></div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'aircondition', false: 'aircondition-error'}[report.aircondition.status]" class="img">空調</div>
-      <div class="text">{{report.aircondition.problem}}</div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'led', false: 'led-error'}[report.led.status]" class="img">LED</div>
-      <div class="text"> </div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'spraydevice', false: 'spraydevice-error'}[report.spraydevice.status]" class="img">氣霧系統</div>
-      <div class="text"> </div>
-    </div>
-    <div class="block item">
-      <div ng-class="{true: 'waterrecycle', false: 'waterrecycle-error'}[report.waterrecycle.status]" class="img">廢液回收</div>
-      <div class="text"></div>
-    </div>
-    <div class="block item last">
-      <div ng-class="{true: 'environment', false: 'environment-error'}[report.environment.status]" class="img">環境維護</div>
-      <div class="text"></div>
-    </div>
-    <div ng-show="false" class="content">今天還沒有檢查喔！</div>
+    <div ng-show="!check.today" class="content">今天還沒有檢查喔！</div>
   </div>
 </div>

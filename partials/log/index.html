@@ -3,14 +3,14 @@
 <div class="nav-bar">
   <div class="container">
     <ul class="navtabs">
-      <li> <a class="mybtn">草莓室</a></li>
-      <li> <a class="mybtn">萵苣室</a></li>
+      <li> <a ng-click="switchRoom('room1')" class="mybtn">萵苣室</a></li>
+      <li> <a ng-click="switchRoom('room2')" class="mybtn">草莓室</a></li>
     </ul>
   </div>
 </div>
 <div id="main">
   <div class="container">
-    <div ng-controller="LogCtrl" class="chart-control">
+    <div class="chart-control">
       <div class="block first">
         <div ng-click="switch('par')" class="img par"></div>
       </div>
@@ -34,5 +34,7 @@
       </div>
     </div>
     <div class="historyChart"></div>
+    <div ng-click="show('day')" class="btn">	天顯示</div>
+    <div ng-click="show('week')" class="btn">	週顯示</div>
   </div>
 </div>
