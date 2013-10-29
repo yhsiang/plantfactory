@@ -552,11 +552,26 @@ h3.blue {
 	background-color: #fc0;
 }
 
+.check .control-group .text {
+	margin-left: 100px;
+	padding-top: 10px;
+	height: 38px;
+	font-size: 17.5px;
+	color: #000;
+}
+
 .check .control-group input {
 	margin-left: 20px;
 	height: 38px;
 	font-size: 17.5px;
 }
+
+.check .control-group textarea {
+	margin-left: 20px;
+	height: 38px;
+	font-size: 17.5px;
+}
+
 .check .control-group .btn-group {
 	margin-left: 20px;
 }

@@ -9,16 +9,14 @@
   </div>
 </div>
 <div id="main">
-  <div class="container">
-    <div class="big-pic"><img src="http://img1.qq.com/comic/pics/747/747563.jpg"/></div>
+  <div ng-controller="AlbumCtrl" class="container">
+    <div class="big-pic"><img ng-src="{{thumbs[item].url}}"/></div>
     <div class="control-panel">
-      <div class="add"><a class="mybtn">新增紀錄</a></div>
+      <div class="add"><a href="#/issues/add" class="mybtn">新增紀錄</a></div>
       <div class="search"><a class="mybtn">查詢</a></div>
       <div class="tag"><a class="mybtn">作物</a><a class="mybtn">設備</a></div>
       <div class="date">記錄日期 2013/10/2</div>
     </div>
-    <div class="thumbs"><img src="http://img1.qq.com/comic/pics/747/747563.jpg" class="first"/><img src="http://img1.qq.com/comic/pics/747/747563.jpg"/><img src="http://img1.qq.com/comic/pics/747/747563.jpg"/><img src="http://img1.qq.com/comic/pics/747/747563.jpg"/><img src="http://img1.qq.com/comic/pics/747/747563.jpg"/><img src="http://img1.qq.com/comic/pics/747/747563.jpg"/><img src="http://img1.qq.com/comic/pics/747/747563.jpg" class="last"/><img src="http://img1.qq.com/comic/pics/747/747563.jpg" class="first"/>
-      <!--img(src='http://img1.qq.com/comic/pics/747/747563.jpg')-->
-    </div>
+    <div class="thumbs"><img ng-repeat="thumb in thumbs" ng-src="{{thumb.url}}" ng-click="switch($index)"/></div>
   </div>
 </div>

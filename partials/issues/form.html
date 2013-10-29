@@ -1,0 +1,26 @@
+
+<div class="msg-pic"><img src="/img/sky.png" class="log"/></div>
+<div class="container">
+  <form ng-controller="UploadCtrl" ng-init="init()" class="check">
+    <div class="control-group">
+      <div upload="file" class="mybtn">上傳照片</div>
+      <div class="text"> </div>
+    </div>
+    <div class="control-group">
+      <div class="label">分類</div>
+      <div class="btn-group">
+        <button ng-model="file.type" btn-radio="true" class="btn btn-large btn-success">作物</button>
+        <button ng-model="file.type" btn-radio="false" class="btn btn-large btn-danger">設備</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="label">標題</div>
+      <input ng-model="file.title"/>
+    </div>
+    <div class="control-group">
+      <div class="label">說明</div>
+      <textarea ng-model="file.desc"></textarea>
+    </div>
+    <div class="form-action"><a href="#/issues" class="btn">取消</a><a ng-click="add()" class="btn primary-btn">儲存</a></div>
+  </form>
+</div>

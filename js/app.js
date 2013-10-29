@@ -8,9 +8,21 @@ pf.config(function ($routeProvider) {
 			.when('/log', {templateUrl: '/partials/log/index.html', controller: 'LogCtrl'})
 			.when('/camera', {templateUrl:'/partials/live/index.html', controller: 'CamCtrl'})
 			.when('/issues', {templateUrl:'/partials/issues/index.html'})
+			.when('/issues/add', {templateUrl: '/partials/issues/form.html'})
 			.otherwise({redirectTo: '/factory'});
 	});
-
+pf.directive('upload', function () {
+	return {
+		link: function (scope, element, attrs) {
+			element.bind('click', function () {
+				filepicker.pick(function(InkBlob){
+  				element.next().html(InkBlob.url);
+  				scope[attrs.upload].url = InkBlob.url;
+				});
+			});
+		}
+	}
+});
 pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 	function ($scope, $timeout, $http, angularFire) {
 		$scope.check = {today: false, am: false, pm: false};
@@ -238,5 +250,27 @@ pf.controller('CamCtrl', ['$scope',
 		}
 
 		getOne();
+	}
+]);
+pf.controller('AlbumCtrl', ['$scope', 'angularFireCollection',
+	function ($scope, angularFireCollection) {
+		var ref = new Firebase('https://ubuntu20.firebaseIO.com/plantfactory/0/issues');
+		$scope.thumbs = angularFireCollection(ref);
+		$scope.item =0;
+		$scope.switch = function (index) {
+			$scope.item = index;
+		}
+	}
+]);
+pf.controller('UploadCtrl', ['$scope', '$location', 
+	function ($scope, $location) {
+		$scope.file = {};
+		var ref = new Firebase('https://ubuntu20.firebaseIO.com/plantfactory/0');
+		$scope.add = function () {
+			$scope.file.time = Firebase.ServerValue.TIMESTAMP;
+			var fileref = ref.child('issues').push($scope.file);
+			fileref.setPriority(Firebase.ServerValue.TIMESTAMP);
+			$location.path("/issues");
+		}
 	}
 ]);
