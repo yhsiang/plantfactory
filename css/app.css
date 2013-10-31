@@ -389,8 +389,21 @@ h3.blue {
 	margin-left: 420px;
 	width: 300px;
 	height: 300px;
-	display: flex;
-	flex-flow: column;
+	display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-flow: column;
+  -moz-flex-flow: column;
+  -ms-flex-flow: column;
+  -o-flex-flow: column;
+  flex-flow: column;
+  flex-direction: column;*/
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
 	align-items: center;
 	justify-content: center;
 } 

@@ -198,11 +198,11 @@ pf.controller('LogCtrl', ['$scope', '$http',
 
 
   		data.forEach(function(d) {
-  			//console.log(d.Time);
-  			d.Time = new Date(d.Time);
+  			var t = d.Time.split(/[^0-9]/);
+  			d.Time = new Date (t[0],t[1]-1,t[2],t[3],t[4],t[5] );
   			d.Value = +d.Value;
   		});
-  		//*/
+  		
   		x.domain(d3.extent(data, function(d) { return d.Time; }));
 //    y.domain(d3.extent(data, function(d) { return d.Value; }));
 			svg.selectAll("g").data([]).exit().remove()
@@ -238,10 +238,12 @@ pf.controller('CamCtrl', ['$scope',
 		getOne = function () {
 			var camera1 = 'http://ubuntu20:camera@140.120.190.16/videostream.cgi?rate=0'
 			$scope.camera = camera1;
+			console.log(camera1)
 		}
 
 		getTwo = function () {
 			var camera2 = 'http://ubuntu20:camera@140.120.190.16:81/cgi/jpg/image.cgi';
+			console.log(camera2);
 			$scope.camera = camera2;
 		}
 		$scope.switch = function (room) {
