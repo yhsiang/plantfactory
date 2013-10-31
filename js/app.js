@@ -68,6 +68,11 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 		}
 		xiancallback = function (res) {
 			$scope.room3 = res.result[0]["121101003"];
+			angular.forEach($scope.room3, function (value, key) {
+				if( value.class == 'ph')
+					value.value = Math.round(value.value*100) /100;
+			});
+
 		}	
 		$scope.msg = '萵苣室　CO2在2013/10/02　15:10　異常';
 
