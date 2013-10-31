@@ -21,6 +21,13 @@
       <div class="text">{{sensor.value}}</div>
     </div>
   </div>
+  <div class="room">
+    <h3 class="blue">西安展場</h3>
+    <div ng-repeat="sensor in room3" ng-class="{first: $first}" class="block">
+      <div class="img {{sensor.class}}">{{sensor.name}}</div>
+      <div class="text">{{sensor.value}}</div>
+    </div>
+  </div>
   <div class="report">
     <div class="title"> 
       <h3>工廠情況</h3><a ng-show="false" class="mybtn">修改</a><a ng-show="check.am || check.pm" class="time-tab">上午</a><a ng-show="check.pm" class="time-tab">下午</a>

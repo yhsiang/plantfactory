@@ -64,12 +64,17 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 		callback = function (res) {
 			$scope.room1 = res.result[0]["121101001"];
 			$scope.room2 = res.result[1]["121101002"];
+
+		}
+		xiancallback = function (res) {
+			$scope.room3 = res.result[0]["121101003"];
 		}	
 		$scope.msg = '萵苣室　CO2在2013/10/02　15:10　異常';
 
 		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/index.php')
 			.success(callback);
-
+		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/xian.php')
+			.success(xiancallback);
 		$scope.items = [];
 
 		$scope.pos = function (index) {
