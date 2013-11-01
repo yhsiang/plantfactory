@@ -208,8 +208,10 @@ pf.controller('LogCtrl', ['$scope', '$http',
 
 
   		data.forEach(function(d) {
-  			var t = d.Time.split(/[^0-9]/);
-  			d.Time = new Date (t[0],t[1]-1,t[2],t[3],t[4],t[5] );
+  			if(typeof(d.Time) == "string") {
+  				var t = d.Time.split(/[^0-9]/);
+  				d.Time = new Date (t[0],t[1]-1,t[2],t[3],t[4],t[5] );
+  			}
   			d.Value = +d.Value;
   		});
   		

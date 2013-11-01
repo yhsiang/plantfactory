@@ -162,7 +162,7 @@ header .blue-bg {
 }
 
 #content-wrapper .msg-pic {
-	height: 312px;
+	height: 300px;
 	margin-top: 12px;
 	font-size: large;
 	background-image: url(/img/menu_bg-1.png);
@@ -171,18 +171,18 @@ header .blue-bg {
 }
 
 #content-wrapper .msg-pic img {
-  margin-left: auto;
-  margin-right: auto;
+	margin: auto;
   display: block;
+  max-height: 295px;
 }
 
 #content-wrapper .msg-pic img.index {
-	  padding-top: 42px;
+	padding-top: 42px;
 	width: 640px;
 	height: 239px;
 }
 #content-wrapper .msg-pic img.log {
-	padding-top: 20px;
+	padding-top: 5px;
 }
 
 #content-wrapper .container {
