@@ -310,8 +310,28 @@ pf.controller('CamCtrl', ['$scope',
 pf.controller('AlbumCtrl', ['$scope', 'angularFireCollection',
 	function ($scope, angularFireCollection) {
 		var ref = new Firebase('https://ubuntu20.firebaseIO.com/plantfactory/0/issues');
-		$scope.thumbs = angularFireCollection(ref);
-		$scope.item =0;
+		$scope.item =-1;
+		$scope.thumbs = [];	
+		ref.on('value', function (snapshot) {
+			angular.forEach(snapshot.val(), function (value, key) {
+				$scope.thumbs.push(value);
+			})
+			firstElement($scope.thumbs);
+			$scope.$apply();
+		})
+		function firstElement(list) {
+			$scope.item =-1;
+			angular.forEach(list, function (value, index) {
+				if($scope.item ==-1 && value.type == true)
+					$scope.item = index;
+			})			
+		}
+		$scope.type = function (type) {
+			angular.forEach($scope.thumbs, function (value, index) {
+				value.type=!value.type;
+			})
+			firstElement($scope.thumbs);
+		}
 		$scope.switch = function (index) {
 			$scope.item = index;
 		}

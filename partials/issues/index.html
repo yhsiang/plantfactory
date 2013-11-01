@@ -1,22 +1,26 @@
 
 <div class="msg-pic"><img src="/img/sky.png" class="log"/></div>
-<div class="nav-bar">
-  <div class="container">
-    <ul class="navtabs">
-      <li> <a class="mybtn">草莓室</a></li>
-      <li> <a class="mybtn">萵苣室</a></li>
-    </ul>
-  </div>
+<!--.nav-bar
+<div class="container">
+  <ul class="navtabs">
+    <li> <a class="mybtn">草莓室</a></li>
+    <li> <a class="mybtn">萵苣室</a></li>
+  </ul>
 </div>
+-->
 <div id="main">
   <div ng-controller="AlbumCtrl" class="container">
-    <div class="big-pic"><img ng-src="{{thumbs[item].url}}"/></div>
+    <div class="big-pic"><img ng-src="{{thumbs[item].url}}"/>
+      <div class="head">{{thumbs[item].title}}</div>
+      <div class="desc">{{thumbs[item].desc}}</div>
+    </div>
     <div class="control-panel">
       <div class="add"><a href="#/issues/add" class="mybtn">新增紀錄</a></div>
-      <div class="search"><a class="mybtn">查詢</a></div>
-      <div class="tag"><a class="mybtn">作物</a><a class="mybtn">設備</a></div>
-      <div class="date">記錄日期 2013/10/2</div>
+      <!--.search<a class="mybtn">查詢</a>
+      -->
+      <div class="tag"><a ng-click="type()" class="mybtn">作物</a><a ng-click="type()" class="mybtn">設備</a></div>
+      <!--.date 記錄日期 2013/10/2-->
     </div>
-    <div class="thumbs"><img ng-repeat="thumb in thumbs" ng-src="{{thumb.url}}" ng-click="switch($index)"/></div>
+    <div class="thumbs"><img ng-repeat="thumb in thumbs" ng-src="{{thumb.url}}" ng-click="switch($index)" ng-show="thumb.type"/></div>
   </div>
 </div>
