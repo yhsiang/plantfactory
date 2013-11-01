@@ -81,6 +81,7 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
           updateLater(); // schedule another update
         }, 1000);
     }
+
 		callback = function (res) {
 			$scope.room1 = res.result[0]["121101001"];
 			$scope.room2 = res.result[1]["121101002"];
@@ -95,11 +96,21 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 
 		}	
 		$scope.msg = '萵苣室　CO2在2013/10/02　15:10　異常';
+		function getRoomData () {
+			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/index.php')
+				.success(callback);
+			$timeout(function () {
+				getRoomData();
+			}, 600000); // 10分鐘
+		}
+		function getXianData () {
+			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/xian.php')
+				.success(xiancallback);
+			$timeout(function () {
+				getXianData();
+			}, 10000); // 10秒鐘
+		}
 
-		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/index.php')
-			.success(callback);
-		$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/xian.php')
-			.success(xiancallback);
 		$scope.items = [];
 
 		$scope.pos = function (index) {
@@ -107,6 +118,8 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 			if(index%7 == 6) return 'last';
 		}
 		updateLater();
+		getRoomData();
+		getXianData();
 	}
 ]);
 
@@ -155,7 +168,6 @@ pf.controller('LogCtrl', ['$scope', '$http',
 		}
 		xiancallback = function (res) {
 			$scope.room3 = res.result[0]["121101003"];
-			console.log($scope.room3)
 		}
 		function getData(day) {
 			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/log.php', {params: {q: day}})
