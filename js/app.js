@@ -125,17 +125,23 @@ pf.controller('FormCtrl',['$scope', '$location', 'angularFire',
 
 pf.controller('LogCtrl', ['$scope', '$http',
 	function ($scope, $http) {
-		$scope.field = "co2";
+		$scope.field = "par";
 		callback = function (res) {
 			$scope.room1 = res.result[0]["121101001"];
 			$scope.room2 = res.result[1]["121101002"];
 			$scope.room = $scope.room1;
-			$scope.chart = $scope.room1[0]["co2"];
+			$scope.chart = $scope.room1[0]["par"];
 			drawChart($scope.chart);
+		}
+		xiancallback = function (res) {
+			$scope.room3 = res.result[0]["121101003"];
+			console.log($scope.room3)
 		}
 		function getData(day) {
 			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/log.php', {params: {q: day}})
 				.success(callback);
+			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/xianlog.php', {params: {q: day}})
+				.success(xiancallback);
 		}
 		getData('day');
 		function xAxisTitle (type) {
@@ -147,6 +153,7 @@ pf.controller('LogCtrl', ['$scope', '$http',
 				case 'ec': return '電導度';
 				case 'water': return '水溫 (\u2103)';
 				case 'co2': return 'CO2濃度';
+				case 'led': return '流明LUX';
 			}
 		}
 		function  ydomain(type) {
@@ -158,13 +165,28 @@ pf.controller('LogCtrl', ['$scope', '$http',
 				case 'ec': return [0,10];
 				case 'water': return [0,100];
 				case 'co2': return [0,1000];
+				case 'led': return [0,4000];
 			};
 		};
 		$scope.show = function (day) {
 			getData(day)
 		}
+		$scope.its = false;
 		$scope.switchRoom = function (room) {
-			$scope.room = (room == 'room2') ? $scope.room2 : $scope.room1;
+			if(!room) return;
+			switch(room) {
+				case 'room2':
+					$scope.room = $scope.room2;
+					$scope.its = false;				
+					break;
+				case 'room3':
+					$scope.room = $scope.room3;
+					$scope.its = true;
+					break;
+				default:
+					$scope.room = $scope.room1;
+					$scope.its = false;
+			}
 			$scope.chart = $scope.room[0][$scope.field];
 			drawChart($scope.chart);
 		}
@@ -205,7 +227,6 @@ pf.controller('LogCtrl', ['$scope', '$http',
   		var line = d3.svg.line()
   		.x(function(d) { return x(d.Time); })
   		.y(function(d) { return y(d.Value); });
-
 
   		data.forEach(function(d) {
   			if(typeof(d.Time) == "string") {

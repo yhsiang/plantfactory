@@ -5,6 +5,7 @@
     <ul class="navtabs">
       <li> <a ng-click="switchRoom('room1')" class="mybtn">萵苣室</a></li>
       <li> <a ng-click="switchRoom('room2')" class="mybtn">草莓室</a></li>
+      <li> <a ng-click="switchRoom('room3')" class="mybtn">西安展場</a></li>
     </ul>
   </div>
 </div>
@@ -13,6 +14,9 @@
     <div class="chart-control">
       <div class="block first">
         <div ng-click="switch('par')" class="img par"></div>
+      </div>
+      <div ng-show="its" class="block">
+        <div ng-click="switch('led')" class="img led"></div>
       </div>
       <div class="block">
         <div ng-click="switch('in')" class="img in"></div>
@@ -23,13 +27,13 @@
       <div class="block">
         <div ng-click="switch('ph')" class="img ph"></div>
       </div>
-      <div class="block">
+      <div ng-show="!its" class="block">
         <div ng-click="switch('ec')" class="img ec"></div>
       </div>
-      <div class="block">
+      <div ng-show="!its" class="block">
         <div ng-click="switch('water')" class="img water"></div>
       </div>
-      <div class="block last">
+      <div ng-show="!its" class="block last">
         <div ng-click="switch('co2')" class="img co2"></div>
       </div>
     </div>
