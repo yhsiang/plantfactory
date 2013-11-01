@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="historyChart"></div>
-    <div ng-click="show('day')" class="btn">	天顯示</div>
-    <div ng-click="show('week')" class="btn">	週顯示</div>
+    <div ng-click="show('day')" ng-class="{'btn-primary': primary =='day'}" class="btn">	天顯示</div>
+    <div ng-click="show('week')" ng-class="{'btn-primary': primary =='week'}" class="btn">	週顯示</div>
   </div>
 </div>

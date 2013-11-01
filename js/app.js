@@ -188,8 +188,10 @@ pf.controller('LogCtrl', ['$scope', '$http',
 				case 'led': return [0,4000];
 			};
 		};
+		$scope.primary ='day'
 		$scope.show = function (day) {
 			getData(day)
+			$scope.primary = day;
 		}
 		$scope.active = 'room1';
 		$scope.its = false;
