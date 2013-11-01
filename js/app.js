@@ -333,11 +333,13 @@ pf.controller('AlbumCtrl', ['$scope', 'angularFireCollection',
 					$scope.item = index;
 			})			
 		}
-		$scope.type = function (type) {
+		$scope.type = 'plant';
+		$scope.changetype = function (type) {
 			angular.forEach($scope.thumbs, function (value, index) {
 				value.type=!value.type;
 			})
 			firstElement($scope.thumbs);
+			$scope.type =  (type == 'plant') ? 'plant' : 'equip';
 		}
 		$scope.switch = function (index) {
 			$scope.item = index;
