@@ -1,9 +1,7 @@
 
 <div class="msg-pic"><img src="/img/picture.png" class="index"/></div>
 <div ng-controller="IndexCtrl" class="container">
-  <div class="time">時　間　{{ now | date: 'yyyy/MM/dd HH:mm:ss' }}
-    <div class="control-group pull-right"><a href="#/factory/check/add" class="mybtn">新增</a><a class="mybtn">查詢</a></div>
-  </div>
+  <div class="time">時　間　{{ now | date: 'yyyy/MM/dd HH:mm:ss' }}</div>
   <div ng-show="false" class="msg">{{msg}}
     <div class="pull-right"><a class="mybtn">我知道了</a></div>
   </div>
@@ -30,8 +28,9 @@
   </div>
   <div class="report">
     <div class="title"> 
-      <h3>工廠情況</h3><a ng-show="false" class="mybtn">修改</a><a ng-show="check.am || check.pm" class="time-tab">上午</a><a ng-show="check.pm" class="time-tab">下午</a>
+      <h3>工廠情況</h3><a ng-show="false" class="mybtn">修改</a><a ng-show="check.am || check.pm" ng-click="switch('am')" class="time-tab">上午</a><a ng-show="check.pm" ng-click="switch('pm')" class="time-tab">下午</a>
       <h4 class="pull-right">檢查時間: {{checktime | date: 'yyyy/MM/dd HH:mm'}}</h4>
+      <div class="control-group pull-right"><a href="#/factory/check/add" class="mybtn">新增</a><a class="mybtn">查詢</a></div>
     </div>
     <div ng-show="check.today">
       <div class="block item first">

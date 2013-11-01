@@ -34,23 +34,43 @@ pf.controller('IndexCtrl', ['$scope', '$timeout', '$http', 'angularFire',
 		
 		var promise = angularFire(ref.limit(1), $scope, 'reports', []);
 		promise.then(function () {
-			var i = 0
-			angular.forEach($scope.reports, function (obj, index) {
-				if(i== 0) {
-					$scope.report = obj;
-					if(obj.time > midStart.getTime()) {
-						$scope.check.am = false;
-						$scope.check.pm = true;
-						$scope.check.today = true;
-					} else if (obj.time > todayStart.getTime()) {
-						$scope.check.am =true;
-						$scope.check.today = true;
-					}
-					$scope.checktime = new Date(obj.time);
-				}
-				i++;
-			})
+			$scope.key = Object.keys($scope.reports);
+			$scope.report = $scope.reports[$scope.key[0]];
+			if($scope.report.time > midStart.getTime()) {
+				$scope.check.am = false;
+				$scope.check.pm = true;
+				$scope.check.today = true;
+			} else if ($scope.report.time > todayStart.getTime()) {
+				$scope.check.am =true;
+				$scope.check.today = true;
+			}
+			$scope.checktime = new Date($scope.report.time);
 		});
+		function change (time) {
+				switch(time) {
+					case 'am':
+						$scope.report = $scope.reports[$scope.key[1]];
+						$scope.checktime = new Date($scope.report.time);
+						break;
+					case 'pm':
+						$scope.report = $scope.reports[$scope.key[0]];
+						$scope.checktime = new Date($scope.report.time);
+						break;
+				}			
+		}
+		$scope.switch = function (time) {
+			if(!$scope.check.pm) return;
+			if($scope.key.length == 1) {
+				var p = angularFire(ref.limit(2), $scope, 'reports', []);	
+				p.then(function () {
+					$scope.key = Object.keys($scope.reports);
+					change(time);
+				})
+			} else {
+				change(time);
+			}	
+
+		}
 		function updateTime () {
 			$scope.now = new Date();
 		}
