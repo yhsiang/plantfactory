@@ -444,6 +444,10 @@ h3.blue {
 	margin-left: 5px;
 	margin-top: 10px;
 }
+
+.choose {
+	border: 2px solid #f00;
+}
 .thumbs img.first {
 	margin-right: 10px;
 	margin-left: 0;

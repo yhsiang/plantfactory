@@ -21,6 +21,6 @@
       <div class="tag"><a ng-click="changetype('plant')" ng-class="{active: type =='plant'}" class="mybtn">作物</a><a ng-click="changetype('equip')" ng-class="{active: type =='equip'}" class="mybtn">設備</a></div>
       <!--.date 記錄日期 2013/10/2-->
     </div>
-    <div class="thumbs"><img ng-repeat="thumb in thumbs" ng-src="{{thumb.url}}" ng-click="switch($index)" ng-show="thumb.type"/></div>
+    <div class="thumbs"><img ng-repeat="thumb in thumbs" ng-src="{{thumb.url}}" ng-click="switch($index)" ng-show="thumb.type" ng-class="{choose: item == $index}"/></div>
   </div>
 </div>
