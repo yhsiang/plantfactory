@@ -3,8 +3,8 @@
 <div class="nav-bar">
   <div class="container">
     <ul class="navtabs">
-      <li> <a ng-click="switch('room1')" class="mybtn">萵苣室</a></li>
-      <li> <a ng-click="switch('room2')" class="mybtn">草莓室</a></li>
+      <li> <a ng-click="switch('room1')" ng-class="{active: active == 'room1'}" class="mybtn">萵苣室</a></li>
+      <li> <a ng-click="switch('room2')" ng-class="{active: active == 'room2'}" class="mybtn">草莓室</a></li>
     </ul>
   </div>
 </div>

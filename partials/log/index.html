@@ -3,9 +3,9 @@
 <div class="nav-bar">
   <div class="container">
     <ul class="navtabs">
-      <li> <a ng-click="switchRoom('room1')" class="mybtn">萵苣室</a></li>
-      <li> <a ng-click="switchRoom('room2')" class="mybtn">草莓室</a></li>
-      <li> <a ng-click="switchRoom('room3')" class="mybtn">西安展場</a></li>
+      <li><a ng-click="switchRoom('room1')" ng-class="{active: active == 'room1'}" class="mybtn">萵苣室</a></li>
+      <li> <a ng-click="switchRoom('room2')" ng-class="{active: active == 'room2'}" class="mybtn">草莓室</a></li>
+      <li> <a ng-click="switchRoom('room3')" ng-class="{active: active == 'room3'}" class="mybtn">西安展場</a></li>
     </ul>
   </div>
 </div>

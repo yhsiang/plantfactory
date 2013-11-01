@@ -504,6 +504,11 @@ h3.blue {
 	margin-left: 5px;
 	margin-right: 5px;
 }
+.active {
+	background-color: #006699;
+	text-decoration: none;
+	color: #fff;
+}
 .time-tab:hover {
 	background-color: #006699;
 	text-decoration: none;

@@ -191,21 +191,25 @@ pf.controller('LogCtrl', ['$scope', '$http',
 		$scope.show = function (day) {
 			getData(day)
 		}
+		$scope.active = 'room1';
 		$scope.its = false;
 		$scope.switchRoom = function (room) {
 			if(!room) return;
 			switch(room) {
 				case 'room2':
 					$scope.room = $scope.room2;
-					$scope.its = false;				
+					$scope.its = false;		
+					$scope.active = 'room2';		
 					break;
 				case 'room3':
 					$scope.room = $scope.room3;
 					$scope.its = true;
+					$scope.active = 'room3';
 					break;
 				default:
 					$scope.room = $scope.room1;
 					$scope.its = false;
+					$scope.active = 'room1';
 			}
 			$scope.chart = $scope.room[0][$scope.field];
 			drawChart($scope.chart);
@@ -287,17 +291,18 @@ pf.controller('LogCtrl', ['$scope', '$http',
    ]);
 pf.controller('CamCtrl', ['$scope', 
 	function ($scope) {
-		
+		$scope.active = 'room1';
 		getOne = function () {
 			var camera1 = 'http://ubuntu20:camera@140.120.190.16/videostream.cgi?rate=0'
 			$scope.camera = camera1;
-			console.log(camera1)
+			$scope.active = 'room1';
 		}
 
 		getTwo = function () {
 			var camera2 = 'http://ubuntu20:camera@140.120.190.16:81/cgi/jpg/image.cgi';
 			console.log(camera2);
 			$scope.camera = camera2;
+			$scope.active = 'room2';
 		}
 		$scope.switch = function (room) {
 			if(room =='room1') getOne();
