@@ -156,34 +156,29 @@ pf.controller('FormCtrl',['$scope', '$location', 'angularFire',
 	}
 ]);
 
-pf.controller('LogCtrl', ['$scope', '$http',
-	function ($scope, $http) {
+pf.controller('LogCtrl', ['$scope', '$http', '$q',
+	function ($scope, $http, $q) {
 		$scope.active = 'room1';
 		$scope.its = false;
 		$scope.field = "par";
-		$scope.primary ='day'
+		$scope.primary ='day';
+		var deferred = $q.defer();
 		callback = function (res) {
 			$scope.room1 = res.result[0]["121101001"];
 			$scope.room2 = res.result[1]["121101002"];
-			$scope.room = $scope.room1;
-			$scope.chart = $scope.room[0][$scope.field];
-			if(!$scope.its) drawChart($scope.chart);
+			drawChart();
 		}
 		xiancallback = function (res) {
 			$scope.room3 = res.result[0]["121101003"];
-      if($scope.its) {
-      	$scope.room = $scope.room3;
-      	$scope.chart = $scope.room[0][$scope.field];
-      	drawChart($scope.chart);
-		  }
 		}
 		function getData(day) {
+			
 			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/log.php', {params: {q: day}})
-				.success(callback);
 			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/xianlog.php', {params: {q: day}})
-				.success(xiancallback);
 		}
+	
 		getData('day');
+
 		function xAxisTitle (type) {
 			switch(type) {
 				case 'par': return '光合作用有效程度 (PAR)';
@@ -208,8 +203,8 @@ pf.controller('LogCtrl', ['$scope', '$http',
 				case 'led': return [0,9500];
 			};
 		};
-		
 		$scope.show = function (day) {
+			$scope.room = [];
 			getData(day);
 			$scope.primary = day;
 		}
@@ -218,28 +213,22 @@ pf.controller('LogCtrl', ['$scope', '$http',
 			if(!room) return;
 			switch(room) {
 				case 'room2':
-					$scope.room = $scope.room2;
 					$scope.its = false;		
 					$scope.active = 'room2';		
 					break;
 				case 'room3':
-					$scope.room = $scope.room3;
 					$scope.its = true;
 					$scope.active = 'room3';
 					break;
 				default:
-					$scope.room = $scope.room1;
 					$scope.its = false;
 					$scope.active = 'room1';
 			}
-			$scope.chart = $scope.room[0][$scope.field];
-			drawChart($scope.chart);
+			drawChart();
 		}
 		$scope.switch = function (field) {
 			$scope.field = field;
-	   if($scope.its) $scope.room = $scope.room3;
-			$scope.chart = $scope.room[0][field];
-			drawChart($scope.chart);
+			drawChart();
 		}
 		var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 680 - margin.left - margin.right,
@@ -252,9 +241,21 @@ pf.controller('LogCtrl', ['$scope', '$http',
   	.attr("height", height + margin.top + margin.bottom)
   	.append("g")
   	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+   
   //d3.tsv("/data/data.tsv", function(error, data) {
-  	var drawChart = function(data) {  
+  	var drawChart = function() { 
+  		switch($scope.active){
+  			case 'room2':
+  			  data = $scope.room2[0][$scope.field];
+  				break;
+  			case 'room3':
+  			  if($scope.field == 'co2' || $scope.field =='ec' || $scope.field =='water')
+  			  	$scope.field ='par';
+  			  data = $scope.room3[0][$scope.field];
+  				break;
+  			default:
+  			  data = $scope.room1[0][$scope.field];	
+  		}
   		var x = d3.time.scale()
   		.range([0, width]);
 
