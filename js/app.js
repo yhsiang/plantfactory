@@ -158,16 +158,24 @@ pf.controller('FormCtrl',['$scope', '$location', 'angularFire',
 
 pf.controller('LogCtrl', ['$scope', '$http',
 	function ($scope, $http) {
+		$scope.active = 'room1';
+		$scope.its = false;
 		$scope.field = "par";
+		$scope.primary ='day'
 		callback = function (res) {
 			$scope.room1 = res.result[0]["121101001"];
 			$scope.room2 = res.result[1]["121101002"];
 			$scope.room = $scope.room1;
-			$scope.chart = $scope.room1[0]["par"];
-			drawChart($scope.chart);
+			$scope.chart = $scope.room[0][$scope.field];
+			if(!$scope.its) drawChart($scope.chart);
 		}
 		xiancallback = function (res) {
 			$scope.room3 = res.result[0]["121101003"];
+      if($scope.its) {
+      	$scope.room = $scope.room3;
+      	$scope.chart = $scope.room[0][$scope.field];
+      	drawChart($scope.chart);
+		  }
 		}
 		function getData(day) {
 			$http.jsonp('http://master.ubuntu20.tw/~yhsiang/pf/exhibit/log.php', {params: {q: day}})
@@ -190,23 +198,22 @@ pf.controller('LogCtrl', ['$scope', '$http',
 		}
 		function  ydomain(type) {
 			switch(type) {
-				case 'par': return [0,450];
+				case 'par': return [0,800];
 				case 'in': return [0,100];
 				case 'rh': return [0,100];
 				case 'ph': return [-4,10];
 				case 'ec': return [0,10];
 				case 'water': return [0,100];
 				case 'co2': return [0,1000];
-				case 'led': return [0,4000];
+				case 'led': return [0,9500];
 			};
 		};
-		$scope.primary ='day'
+		
 		$scope.show = function (day) {
-			getData(day)
+			getData(day);
 			$scope.primary = day;
 		}
-		$scope.active = 'room1';
-		$scope.its = false;
+
 		$scope.switchRoom = function (room) {
 			if(!room) return;
 			switch(room) {
@@ -230,6 +237,7 @@ pf.controller('LogCtrl', ['$scope', '$http',
 		}
 		$scope.switch = function (field) {
 			$scope.field = field;
+	   if($scope.its) $scope.room = $scope.room3;
 			$scope.chart = $scope.room[0][field];
 			drawChart($scope.chart);
 		}
