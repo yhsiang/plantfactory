@@ -246,6 +246,8 @@ pf.controller('LogCtrl', ['$scope', '$http', '$q',
   	var drawChart = function() { 
   		switch($scope.active){
   			case 'room2':
+  			  if($scope.field == 'led')
+  			  	$scope.field ='par';
   			  data = $scope.room2[0][$scope.field];
   				break;
   			case 'room3':
@@ -254,6 +256,8 @@ pf.controller('LogCtrl', ['$scope', '$http', '$q',
   			  data = $scope.room3[0][$scope.field];
   				break;
   			default:
+  			  if($scope.field == 'led')
+  			  	$scope.field ='par';
   			  data = $scope.room1[0][$scope.field];	
   		}
   		var x = d3.time.scale()
